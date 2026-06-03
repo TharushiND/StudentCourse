@@ -6,9 +6,13 @@ namespace StudentCourse.Models
     {
         public int Id { get; set; }
 
+        [Required]
+        [StringLength(100)]
         public string CourseName { get; set; }
 
-        public string Duration { get; set; }
+        
+        [StringLength(30)]
+        public string? Duration { get; set; }
 
         //public DateTime StartDate { get; set; }
 

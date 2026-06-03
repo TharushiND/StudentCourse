@@ -6,11 +6,17 @@ namespace StudentCourse.Models
     {
         public int Id { get; set; }
 
+        [Required]
+        [StringLength(50)]
         public string Name { get; set; }
 
+        [Required]
+        [StringLength(100)]
+        [EmailAddress]
         public string Email { get; set; }
 
-        public int Age { get; set; }
+        [Range(18, 100)]
+        public int? Age { get; set; }
         public ICollection<Course> Courses { get; set; }
          = new List<Course>();
     }

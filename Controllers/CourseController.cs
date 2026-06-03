@@ -53,7 +53,7 @@ namespace StudentCourse.Controllers
         [HttpDelete("{id}")]
         public IActionResult DeleteCourse(int id)
         {
-            var course = _context.Students.Find(id);
+            var course = _context.Courses.Find(id);
 
             if (course == null)
             {
