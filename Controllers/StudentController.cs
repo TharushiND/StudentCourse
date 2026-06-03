@@ -21,87 +21,132 @@ namespace StudentCourse.Controllers
         [HttpGet]
         public IActionResult GetAllStudents()
         {
-            return Ok(_context.Students.ToList());
+            try
+            {
+                var students = _context.Students.ToList();
+                return Ok(students);
+            }
+            catch (Exception ex) {
+                return StatusCode(500, $"an error occurred! {ex.Message}");
+            }
         }
 
         [HttpPost]
         public IActionResult AddStudent(Student student)
         {
-            _context.Students.Add(student);
-            _context.SaveChanges();
+            try
+            {
+                _context.Students.Add(student);
+                _context.SaveChanges();
 
-            return Ok(student);
+                return Ok(student);
+            }
+            catch (Exception ex) {
+                return StatusCode(500,
+                $"an error occurred: {ex.Message}");
+            }
         }
 
         [HttpPut("{id}")]
         public IActionResult UpdateStudent(int id, Student updatedStudent)
         {
-            var student = _context.Students.Find(id);
-
-            if (student == null)
+            try
             {
-                return NotFound();
+                var student = _context.Students.Find(id);
+
+                if (student == null)
+                {
+                    return NotFound();
+                }
+
+                student.Name = updatedStudent.Name;
+                student.Email = updatedStudent.Email;
+                student.Age = updatedStudent.Age;
+
+                _context.SaveChanges();
+
+                return Ok(student);
             }
-
-            student.Name = updatedStudent.Name;
-            student.Email = updatedStudent.Email;
-            student.Age = updatedStudent.Age;
-
-            _context.SaveChanges();
-
-            return Ok(student);
+            catch (Exception ex) {
+                return StatusCode(500,
+                $"an error occurred: {ex.Message}");
+            }
         }
 
         [HttpDelete("{id}")]
         public IActionResult DeleteStudent(int id)
         {
-            var student = _context.Students.Find(id);
-
-            if (student == null)
+            try
             {
-                return NotFound();
+                var student = _context.Students.Find(id);
+
+                if (student == null)
+                {
+                    return NotFound();
+                }
+
+                _context.Students.Remove(student);
+
+                _context.SaveChanges();
+
+                return Ok("Student Deleted Successfully");
             }
-
-            _context.Students.Remove(student);
-
-            _context.SaveChanges();
-
-            return Ok("Student Deleted Successfully");
+            catch (Exception ex) {
+                return StatusCode(500,
+                $"an error occurred: {ex.Message}");
+            }
         }
 
         [HttpPost("{studentId}/courses/{courseId}")]
         public IActionResult EnrollStudent(int studentId, int courseId)
         {
-            var student = _context.Students
-                .Include(s => s.Courses)
-                .FirstOrDefault(s => s.Id == studentId);
+            try
+            {
+                var student = _context.Students
+                    .Include(s => s.Courses)
+                    .FirstOrDefault(s => s.Id == studentId);
 
-            var course = _context.Courses
-                .FirstOrDefault(c => c.Id == courseId);
+                var course = _context.Courses
+                    .FirstOrDefault(c => c.Id == courseId);
 
-            if (student == null || course == null)
-                return NotFound();
+                if (student == null || course == null)
+                    return NotFound();
 
-            student.Courses.Add(course);
+                student.Courses.Add(course);
 
-            _context.SaveChanges();
+                _context.SaveChanges();
 
-            return Ok("Enrollment successful");
-        }
+                return Ok("Enrollment successful");
+            }
+
+            catch (Exception ex) {
+                    return StatusCode(500,
+                    $"an error occurred: {ex.Message}");
+                }
+            
+            }
 
         [HttpGet("all")]
         public IActionResult GetStudentWithCourse()
-        { 
-            var result = _context.Students
-                .Include(s => s.Courses)
-                .Select(s => new
-                {
-                    StudentName = s.Name,
-                    CourseName = s.Courses.Select(c => c.CourseName).ToList()
-                })
-                .ToList();
+        {
+            try
+            {
+                var result = _context.Students
+                    .Include(s => s.Courses)
+                    .Select(s => new
+                    {
+                        StudentName = s.Name,
+                        CourseName = s.Courses.Select(c => c.CourseName).ToList()
+                    })
+                    .ToList();
 
-            return Ok(result);
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500,
+                $"an error occurred: {ex.Message}");
+            }
         }
     }
 }

@@ -60,7 +60,7 @@ namespace StudentCourse.Controllers
                 return NotFound();
             }
 
-            _context.Students.Remove(course);
+            _context.Courses.Remove(course);
 
             _context.SaveChanges();
 
