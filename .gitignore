@@ -1,0 +1,48 @@
+# Build results
+bin/
+obj/
+
+# User-specific files
+*.user
+*.rsuser
+*.suo
+
+# Visual Studio
+.vs/
+
+# Rider
+.idea/
+
+# VS Code
+.vscode/
+
+# NuGet packages
+packages/
+*.nupkg
+
+# Logs
+*.log
+
+# Test results
+TestResults/
+
+# Publish output
+publish/
+
+# Azure
+*.PublishSettings
+
+# Entity Framework
+*.mdf
+*.ldf
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Environment files
+.env
+.env.*
+
+# Generated files
+Generated/
