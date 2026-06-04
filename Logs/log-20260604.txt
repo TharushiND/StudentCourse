@@ -1,0 +1,5 @@
+2026-06-04 09:56:44.773 +05:30 [INF] Now listening on: http://localhost:5228
+2026-06-04 09:56:44.801 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2026-06-04 09:56:44.802 +05:30 [INF] Hosting environment: Development
+2026-06-04 09:56:44.804 +05:30 [INF] Content root path: C:\Users\TharushiDharmarathna\source\repos\StudentCourse
+2026-06-04 10:14:51.382 +05:30 [INF] Application is shutting down...

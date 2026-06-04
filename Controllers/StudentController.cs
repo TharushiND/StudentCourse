@@ -10,10 +10,12 @@ namespace StudentCourse.Controllers
     public class StudentController : ControllerBase
     {
         private readonly AppDbContext _context;
+        private readonly ILogger<StudentController> _logger;
 
-        public StudentController(AppDbContext context)
+        public StudentController(AppDbContext context, ILogger<StudentController> logger)
         {
             _context = context;
+            _logger = logger;
         }
 
 
@@ -23,11 +25,14 @@ namespace StudentCourse.Controllers
         {
             try
             {
+                _logger.LogInformation("Getting all students");
                 var students = _context.Students.ToList();
                 return Ok(students);
             }
             catch (Exception ex) {
-                return StatusCode(500, $"an error occurred! {ex.Message}");
+             _logger.LogError(ex,
+            "Error occurred while retrieving students");
+                return StatusCode(500);
             }
         }
 
@@ -36,14 +41,22 @@ namespace StudentCourse.Controllers
         {
             try
             {
+                _logger.LogInformation(
+                "Adding student {Name}",
+                student.Name);
+
                 _context.Students.Add(student);
                 _context.SaveChanges();
+
+                _logger.LogInformation(
+                "Student created with ID {Id}",
+                student.Id);
 
                 return Ok(student);
             }
             catch (Exception ex) {
-                return StatusCode(500,
-                $"an error occurred: {ex.Message}");
+                _logger.LogError("Error occurred while creating students");
+                return StatusCode(500);
             }
         }
 
@@ -52,6 +65,7 @@ namespace StudentCourse.Controllers
         {
             try
             {
+                _logger.LogInformation("Updating a student");
                 var student = _context.Students.Find(id);
 
                 if (student == null)
@@ -64,12 +78,12 @@ namespace StudentCourse.Controllers
                 student.Age = updatedStudent.Age;
 
                 _context.SaveChanges();
-
+                _logger.LogInformation("Updated a student");
                 return Ok(student);
             }
             catch (Exception ex) {
-                return StatusCode(500,
-                $"an error occurred: {ex.Message}");
+                _logger.LogError(ex, "Error occurred while updating the student");
+                return StatusCode(500);
             }
         }
 
@@ -78,6 +92,7 @@ namespace StudentCourse.Controllers
         {
             try
             {
+                _logger.LogInformation("Deleting a student");
                 var student = _context.Students.Find(id);
 
                 if (student == null)
@@ -88,12 +103,12 @@ namespace StudentCourse.Controllers
                 _context.Students.Remove(student);
 
                 _context.SaveChanges();
-
+                _logger.LogInformation("Student with Id {Id} was deleted",student.Id);
                 return Ok("Student Deleted Successfully");
             }
             catch (Exception ex) {
-                return StatusCode(500,
-                $"an error occurred: {ex.Message}");
+                _logger.LogError(ex, "Error occurred while deleting the student");
+                return StatusCode(500);
             }
         }
 
@@ -102,6 +117,7 @@ namespace StudentCourse.Controllers
         {
             try
             {
+                _logger.LogInformation("Enrolling a student with ID {Id}",studentId );
                 var student = _context.Students
                     .Include(s => s.Courses)
                     .FirstOrDefault(s => s.Id == studentId);
@@ -115,13 +131,13 @@ namespace StudentCourse.Controllers
                 student.Courses.Add(course);
 
                 _context.SaveChanges();
-
+                _logger.LogInformation("Student enrolled with ID {Id}", studentId);
                 return Ok("Enrollment successful");
             }
 
             catch (Exception ex) {
-                    return StatusCode(500,
-                    $"an error occurred: {ex.Message}");
+                _logger.LogError(ex, "Error occurred while enrolling the student");
+                return StatusCode(500);
                 }
             
             }
@@ -131,6 +147,7 @@ namespace StudentCourse.Controllers
         {
             try
             {
+                _logger.LogInformation("Getting all students with courses");
                 var result = _context.Students
                     .Include(s => s.Courses)
                     .Select(s => new
@@ -144,8 +161,8 @@ namespace StudentCourse.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode(500,
-                $"an error occurred: {ex.Message}");
+                _logger.LogError(ex, "Error occured while retrieving students with courses");
+                return StatusCode(500);
             }
         }
     }
