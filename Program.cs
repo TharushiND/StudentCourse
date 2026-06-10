@@ -12,7 +12,7 @@ Log.Logger = new LoggerConfiguration()
         "Logs/log-.txt",
         rollingInterval: RollingInterval.Day)
     .CreateLogger();
-
+Log.Information("Serilog is working!");
 builder.Host.UseSerilog();
 
 // Add services to the container.

@@ -13,5 +13,23 @@ namespace StudentCourse.Data
         public DbSet<Student> Students { get; set; }
 
         public DbSet<Course> Courses { get; set; }
+
+        public DbSet<StudentCourseMapping> StudentCourses { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<StudentCourseMapping>()
+                .HasKey(sc => new { sc.StudentId, sc.CourseId });
+
+            modelBuilder.Entity<StudentCourseMapping>()
+                .HasOne(sc => sc.Student)
+                .WithMany(s => s.StudentCourses)
+                .HasForeignKey(sc => sc.StudentId);
+
+            modelBuilder.Entity<StudentCourseMapping>()
+                .HasOne(sc => sc.Course)
+                .WithMany(c => c.StudentCourses)
+                .HasForeignKey(sc => sc.CourseId);
+        }
     }
 }

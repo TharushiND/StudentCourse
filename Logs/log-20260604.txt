@@ -3,3 +3,111 @@
 2026-06-04 09:56:44.802 +05:30 [INF] Hosting environment: Development
 2026-06-04 09:56:44.804 +05:30 [INF] Content root path: C:\Users\TharushiDharmarathna\source\repos\StudentCourse
 2026-06-04 10:14:51.382 +05:30 [INF] Application is shutting down...
+2026-06-04 11:42:25.115 +05:30 [INF] Serilog is working!
+2026-06-04 11:42:26.926 +05:30 [INF] Now listening on: https://localhost:7051
+2026-06-04 11:42:26.940 +05:30 [INF] Now listening on: http://localhost:5228
+2026-06-04 11:42:27.287 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2026-06-04 11:42:27.289 +05:30 [INF] Hosting environment: Development
+2026-06-04 11:42:27.291 +05:30 [INF] Content root path: C:\Users\TharushiDharmarathna\source\repos\StudentCourse
+2026-06-04 11:44:52.704 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7051/swagger/index.html - null null
+2026-06-04 11:44:53.424 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7051/_vs/browserLink - null null
+2026-06-04 11:44:53.424 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7051/_framework/aspnetcore-browser-refresh.js - null null
+2026-06-04 11:44:53.432 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7051/swagger/index.html - 200 null text/html;charset=utf-8 731.3376ms
+2026-06-04 11:44:53.455 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7051/_framework/aspnetcore-browser-refresh.js - 200 16511 application/javascript; charset=utf-8 30.5114ms
+2026-06-04 11:44:53.501 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7051/_vs/browserLink - 200 null text/javascript; charset=UTF-8 76.9622ms
+2026-06-04 11:44:53.559 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7051/swagger/v1/swagger.json - null null
+2026-06-04 11:44:53.622 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7051/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 63.0356ms
+2026-06-04 11:48:10.346 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7051/api/Course - null null
+2026-06-04 11:48:10.407 +05:30 [INF] Executing endpoint 'StudentCourse.Controllers.CourseController.GetAllCourses (StudentCourse)'
+2026-06-04 11:48:10.499 +05:30 [INF] Route matched with {action = "GetAllCourses", controller = "Course"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetAllCourses() on controller StudentCourse.Controllers.CourseController (StudentCourse).
+2026-06-04 11:48:10.911 +05:30 [INF] Executed action StudentCourse.Controllers.CourseController.GetAllCourses (StudentCourse) in 397.7377ms
+2026-06-04 11:48:10.922 +05:30 [INF] Executed endpoint 'StudentCourse.Controllers.CourseController.GetAllCourses (StudentCourse)'
+2026-06-04 11:48:10.932 +05:30 [ERR] An unhandled exception has occurred while executing the request.
+System.ArgumentNullException: Value cannot be null. (Parameter 'logger')
+   at System.ArgumentNullException.Throw(String paramName)
+   at System.ArgumentNullException.ThrowIfNull(Object argument, String paramName)
+   at Microsoft.Extensions.Logging.LoggerExtensions.Log(ILogger logger, LogLevel logLevel, EventId eventId, Exception exception, String message, Object[] args)
+   at Microsoft.Extensions.Logging.LoggerExtensions.Log(ILogger logger, LogLevel logLevel, Exception exception, String message, Object[] args)
+   at Microsoft.Extensions.Logging.LoggerExtensions.LogError(ILogger logger, Exception exception, String message, Object[] args)
+   at StudentCourse.Controllers.CourseController.GetAllCourses() in C:\Users\TharushiDharmarathna\source\repos\StudentCourse\Controllers\CourseController.cs:line 31
+   at lambda_method2(Closure, Object, Object[])
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.SyncActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeNextActionFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2026-06-04 11:48:11.022 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7051/api/Course - 500 null text/plain; charset=utf-8 674.764ms
+2026-06-04 11:48:20.104 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7051/api/Course - null null
+2026-06-04 11:48:20.135 +05:30 [INF] Executing endpoint 'StudentCourse.Controllers.CourseController.GetAllCourses (StudentCourse)'
+2026-06-04 11:48:20.174 +05:30 [INF] Route matched with {action = "GetAllCourses", controller = "Course"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetAllCourses() on controller StudentCourse.Controllers.CourseController (StudentCourse).
+2026-06-04 11:48:20.205 +05:30 [INF] Executed action StudentCourse.Controllers.CourseController.GetAllCourses (StudentCourse) in 21.5201ms
+2026-06-04 11:48:20.217 +05:30 [INF] Executed endpoint 'StudentCourse.Controllers.CourseController.GetAllCourses (StudentCourse)'
+2026-06-04 11:48:20.222 +05:30 [ERR] An unhandled exception has occurred while executing the request.
+System.ArgumentNullException: Value cannot be null. (Parameter 'logger')
+   at System.ArgumentNullException.Throw(String paramName)
+   at System.ArgumentNullException.ThrowIfNull(Object argument, String paramName)
+   at Microsoft.Extensions.Logging.LoggerExtensions.Log(ILogger logger, LogLevel logLevel, EventId eventId, Exception exception, String message, Object[] args)
+   at Microsoft.Extensions.Logging.LoggerExtensions.Log(ILogger logger, LogLevel logLevel, Exception exception, String message, Object[] args)
+   at Microsoft.Extensions.Logging.LoggerExtensions.LogError(ILogger logger, Exception exception, String message, Object[] args)
+   at StudentCourse.Controllers.CourseController.GetAllCourses() in C:\Users\TharushiDharmarathna\source\repos\StudentCourse\Controllers\CourseController.cs:line 31
+   at lambda_method2(Closure, Object, Object[])
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.SyncActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeNextActionFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2026-06-04 11:48:20.253 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7051/api/Course - 500 null text/plain; charset=utf-8 149.1324ms
+2026-06-04 11:49:00.315 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7051/api/Student - null null
+2026-06-04 11:49:00.537 +05:30 [INF] Executing endpoint 'StudentCourse.Controllers.StudentController.GetAllStudents (StudentCourse)'
+2026-06-04 11:49:00.613 +05:30 [INF] Route matched with {action = "GetAllStudents", controller = "Student"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetAllStudents() on controller StudentCourse.Controllers.StudentController (StudentCourse).
+2026-06-04 11:49:00.647 +05:30 [INF] Getting all students
+2026-06-04 11:49:05.385 +05:30 [INF] Executed DbCommand (115ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [s].[Id], [s].[Age], [s].[Email], [s].[Name]
+FROM [Students] AS [s]
+2026-06-04 11:49:05.782 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[StudentCourse.Models.Student, StudentCourse, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-06-04 11:49:05.871 +05:30 [INF] Executed action StudentCourse.Controllers.StudentController.GetAllStudents (StudentCourse) in 5242.764ms
+2026-06-04 11:49:05.882 +05:30 [INF] Executed endpoint 'StudentCourse.Controllers.StudentController.GetAllStudents (StudentCourse)'
+2026-06-04 11:49:06.045 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7051/api/Student - 200 null application/json; charset=utf-8 5730.472ms
+2026-06-04 11:54:46.640 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7051/api/Student/all - null null
+2026-06-04 11:54:46.728 +05:30 [INF] Executing endpoint 'StudentCourse.Controllers.StudentController.GetStudentWithCourse (StudentCourse)'
+2026-06-04 11:54:46.741 +05:30 [INF] Route matched with {action = "GetStudentWithCourse", controller = "Student"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetStudentWithCourse() on controller StudentCourse.Controllers.StudentController (StudentCourse).
+2026-06-04 11:54:46.757 +05:30 [INF] Getting all students with courses
+2026-06-04 11:54:47.611 +05:30 [INF] Executed DbCommand (23ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [s].[Name], [s].[Id], [t].[CourseName], [t].[CoursesId], [t].[StudentsId], [t].[Id]
+FROM [Students] AS [s]
+LEFT JOIN (
+    SELECT [c0].[CourseName], [c].[CoursesId], [c].[StudentsId], [c0].[Id]
+    FROM [CourseStudent] AS [c]
+    INNER JOIN [Courses] AS [c0] ON [c].[CoursesId] = [c0].[Id]
+) AS [t] ON [s].[Id] = [t].[StudentsId]
+ORDER BY [s].[Id], [t].[CoursesId], [t].[StudentsId]
+2026-06-04 11:54:47.629 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[<>f__AnonymousType1`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.List`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], StudentCourse, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-06-04 11:54:47.648 +05:30 [INF] Executed action StudentCourse.Controllers.StudentController.GetStudentWithCourse (StudentCourse) in 896.7848ms
+2026-06-04 11:54:47.651 +05:30 [INF] Executed endpoint 'StudentCourse.Controllers.StudentController.GetStudentWithCourse (StudentCourse)'
+2026-06-04 11:54:47.657 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7051/api/Student/all - 200 null application/json; charset=utf-8 1016.2855ms

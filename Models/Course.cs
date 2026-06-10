@@ -8,7 +8,7 @@ namespace StudentCourse.Models
 
         [Required]
         [StringLength(100)]
-        public string CourseName { get; set; }
+        public required string CourseName { get; set; }
 
         
         [StringLength(30)]
@@ -16,7 +16,7 @@ namespace StudentCourse.Models
 
         //public DateTime StartDate { get; set; }
 
-        public ICollection<Student> Students { get; set; }
-         = new List<Student>();
+        public ICollection<StudentCourseMapping> StudentCourses { get; set; }
+          = new List<StudentCourseMapping>();
     }
 }

@@ -1,0 +1,350 @@
+2026-06-10 14:16:14.215 +05:30 [INF] Serilog is working!
+2026-06-10 14:20:24.714 +05:30 [INF] Serilog is working!
+2026-06-10 14:20:25.957 +05:30 [INF] Now listening on: http://localhost:5228
+2026-06-10 14:20:25.963 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2026-06-10 14:20:25.966 +05:30 [INF] Hosting environment: Development
+2026-06-10 14:20:25.968 +05:30 [INF] Content root path: C:\Users\TharushiDharmarathna\source\repos\StudentCourse
+2026-06-10 14:23:54.219 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5228/api/Course - null null
+2026-06-10 14:23:54.251 +05:30 [WRN] Failed to determine the https port for redirect.
+2026-06-10 14:23:54.256 +05:30 [INF] Executing endpoint 'StudentCourse.Controllers.CourseController.GetAllCourses (StudentCourse)'
+2026-06-10 14:23:54.273 +05:30 [INF] Route matched with {action = "GetAllCourses", controller = "Course"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetAllCourses() on controller StudentCourse.Controllers.CourseController (StudentCourse).
+2026-06-10 14:23:54.352 +05:30 [INF] Getting all courses
+2026-06-10 14:23:55.048 +05:30 [INF] Executed DbCommand (15ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Id], [c].[CourseName], [c].[Duration]
+FROM [Courses] AS [c]
+2026-06-10 14:23:55.063 +05:30 [INF] 200 OK - Retrieved all courses successfully
+2026-06-10 14:23:55.069 +05:30 [INF] Executing OkObjectResult, writing value of type 'StudentCourse.Models.CommonResponse`1[[System.Collections.Generic.List`1[[StudentCourse.DTOs.CourseDto, StudentCourse, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-06-10 14:23:55.126 +05:30 [INF] Executed action StudentCourse.Controllers.CourseController.GetAllCourses (StudentCourse) in 847.8986ms
+2026-06-10 14:23:55.131 +05:30 [INF] Executed endpoint 'StudentCourse.Controllers.CourseController.GetAllCourses (StudentCourse)'
+2026-06-10 14:23:55.141 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5228/api/Course - 200 null application/json; charset=utf-8 922.7572ms
+2026-06-10 14:25:04.040 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5228/api/Course - application/json 48
+2026-06-10 14:25:04.051 +05:30 [INF] Executing endpoint 'StudentCourse.Controllers.CourseController.AddCourse (StudentCourse)'
+2026-06-10 14:25:04.063 +05:30 [INF] Route matched with {action = "AddCourse", controller = "Course"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult AddCourse(StudentCourse.DTOs.CreateCourseDto) on controller StudentCourse.Controllers.CourseController (StudentCourse).
+2026-06-10 14:25:04.121 +05:30 [INF] Adding course a
+2026-06-10 14:25:04.454 +05:30 [INF] Executed DbCommand (52ms) [Parameters=[@p0='?' (Size = 100), @p1='?' (Size = 30)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Courses] ([CourseName], [Duration])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1);
+2026-06-10 14:25:04.502 +05:30 [INF] course created with ID 1
+2026-06-10 14:25:04.509 +05:30 [INF] Executing OkObjectResult, writing value of type 'StudentCourse.Models.CommonResponse`1[[StudentCourse.DTOs.CourseDto, StudentCourse, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-06-10 14:25:04.520 +05:30 [INF] Executed action StudentCourse.Controllers.CourseController.AddCourse (StudentCourse) in 451.5848ms
+2026-06-10 14:25:04.524 +05:30 [INF] Executed endpoint 'StudentCourse.Controllers.CourseController.AddCourse (StudentCourse)'
+2026-06-10 14:25:04.530 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5228/api/Course - 200 null application/json; charset=utf-8 490.6219ms
+2026-06-10 14:25:15.318 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5228/api/Course - application/json 48
+2026-06-10 14:25:15.330 +05:30 [INF] Executing endpoint 'StudentCourse.Controllers.CourseController.AddCourse (StudentCourse)'
+2026-06-10 14:25:15.334 +05:30 [INF] Route matched with {action = "AddCourse", controller = "Course"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult AddCourse(StudentCourse.DTOs.CreateCourseDto) on controller StudentCourse.Controllers.CourseController (StudentCourse).
+2026-06-10 14:25:15.342 +05:30 [INF] Adding course b
+2026-06-10 14:25:15.435 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[@p0='?' (Size = 100), @p1='?' (Size = 30)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Courses] ([CourseName], [Duration])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1);
+2026-06-10 14:25:15.446 +05:30 [INF] course created with ID 2
+2026-06-10 14:25:15.452 +05:30 [INF] Executing OkObjectResult, writing value of type 'StudentCourse.Models.CommonResponse`1[[StudentCourse.DTOs.CourseDto, StudentCourse, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-06-10 14:25:15.462 +05:30 [INF] Executed action StudentCourse.Controllers.CourseController.AddCourse (StudentCourse) in 122.3986ms
+2026-06-10 14:25:15.471 +05:30 [INF] Executed endpoint 'StudentCourse.Controllers.CourseController.AddCourse (StudentCourse)'
+2026-06-10 14:25:15.478 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5228/api/Course - 200 null application/json; charset=utf-8 159.7094ms
+2026-06-10 14:25:24.688 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5228/api/Course - application/json 48
+2026-06-10 14:25:24.696 +05:30 [INF] Executing endpoint 'StudentCourse.Controllers.CourseController.AddCourse (StudentCourse)'
+2026-06-10 14:25:24.700 +05:30 [INF] Route matched with {action = "AddCourse", controller = "Course"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult AddCourse(StudentCourse.DTOs.CreateCourseDto) on controller StudentCourse.Controllers.CourseController (StudentCourse).
+2026-06-10 14:25:24.705 +05:30 [INF] Adding course c
+2026-06-10 14:25:24.713 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[@p0='?' (Size = 100), @p1='?' (Size = 30)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Courses] ([CourseName], [Duration])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1);
+2026-06-10 14:25:24.718 +05:30 [INF] course created with ID 3
+2026-06-10 14:25:24.720 +05:30 [INF] Executing OkObjectResult, writing value of type 'StudentCourse.Models.CommonResponse`1[[StudentCourse.DTOs.CourseDto, StudentCourse, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-06-10 14:25:24.723 +05:30 [INF] Executed action StudentCourse.Controllers.CourseController.AddCourse (StudentCourse) in 18.7916ms
+2026-06-10 14:25:24.727 +05:30 [INF] Executed endpoint 'StudentCourse.Controllers.CourseController.AddCourse (StudentCourse)'
+2026-06-10 14:25:24.730 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5228/api/Course - 200 null application/json; charset=utf-8 42.3651ms
+2026-06-10 14:25:35.693 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5228/api/Course - application/json 48
+2026-06-10 14:25:35.702 +05:30 [INF] Executing endpoint 'StudentCourse.Controllers.CourseController.AddCourse (StudentCourse)'
+2026-06-10 14:25:35.707 +05:30 [INF] Route matched with {action = "AddCourse", controller = "Course"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult AddCourse(StudentCourse.DTOs.CreateCourseDto) on controller StudentCourse.Controllers.CourseController (StudentCourse).
+2026-06-10 14:25:35.713 +05:30 [INF] Adding course d
+2026-06-10 14:25:35.720 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[@p0='?' (Size = 100), @p1='?' (Size = 30)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Courses] ([CourseName], [Duration])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1);
+2026-06-10 14:25:35.725 +05:30 [INF] course created with ID 4
+2026-06-10 14:25:35.728 +05:30 [INF] Executing OkObjectResult, writing value of type 'StudentCourse.Models.CommonResponse`1[[StudentCourse.DTOs.CourseDto, StudentCourse, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-06-10 14:25:35.732 +05:30 [INF] Executed action StudentCourse.Controllers.CourseController.AddCourse (StudentCourse) in 19.8047ms
+2026-06-10 14:25:35.735 +05:30 [INF] Executed endpoint 'StudentCourse.Controllers.CourseController.AddCourse (StudentCourse)'
+2026-06-10 14:25:35.739 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5228/api/Course - 200 null application/json; charset=utf-8 45.6931ms
+2026-06-10 14:25:55.149 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5228/api/Course - null null
+2026-06-10 14:25:55.161 +05:30 [INF] Executing endpoint 'StudentCourse.Controllers.CourseController.GetAllCourses (StudentCourse)'
+2026-06-10 14:25:55.165 +05:30 [INF] Route matched with {action = "GetAllCourses", controller = "Course"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetAllCourses() on controller StudentCourse.Controllers.CourseController (StudentCourse).
+2026-06-10 14:25:55.171 +05:30 [INF] Getting all courses
+2026-06-10 14:25:55.184 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Id], [c].[CourseName], [c].[Duration]
+FROM [Courses] AS [c]
+2026-06-10 14:25:55.191 +05:30 [INF] 200 OK - Retrieved all courses successfully
+2026-06-10 14:25:55.194 +05:30 [INF] Executing OkObjectResult, writing value of type 'StudentCourse.Models.CommonResponse`1[[System.Collections.Generic.List`1[[StudentCourse.DTOs.CourseDto, StudentCourse, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-06-10 14:25:55.202 +05:30 [INF] Executed action StudentCourse.Controllers.CourseController.GetAllCourses (StudentCourse) in 31.2395ms
+2026-06-10 14:25:55.208 +05:30 [INF] Executed endpoint 'StudentCourse.Controllers.CourseController.GetAllCourses (StudentCourse)'
+2026-06-10 14:25:55.213 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5228/api/Course - 200 null application/json; charset=utf-8 63.5975ms
+2026-06-10 14:26:47.474 +05:30 [INF] Request starting HTTP/1.1 PUT http://localhost:5228/api/Course/2 - application/json 49
+2026-06-10 14:26:47.481 +05:30 [INF] Executing endpoint 'StudentCourse.Controllers.CourseController.UpdateCourse (StudentCourse)'
+2026-06-10 14:26:47.487 +05:30 [INF] Route matched with {action = "UpdateCourse", controller = "Course"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult UpdateCourse(Int32, StudentCourse.DTOs.UpdateCourseDto) on controller StudentCourse.Controllers.CourseController (StudentCourse).
+2026-06-10 14:26:47.497 +05:30 [INF] Updating a course
+2026-06-10 14:26:47.596 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [c].[Id], [c].[CourseName], [c].[Duration]
+FROM [Courses] AS [c]
+WHERE [c].[Id] = @__p_0
+2026-06-10 14:26:47.623 +05:30 [INF] Executed DbCommand (6ms) [Parameters=[@p1='?' (DbType = Int32), @p0='?' (Size = 30)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Courses] SET [Duration] = @p0
+OUTPUT 1
+WHERE [Id] = @p1;
+2026-06-10 14:26:47.635 +05:30 [INF] Updated a course
+2026-06-10 14:26:47.643 +05:30 [INF] Executing OkObjectResult, writing value of type 'StudentCourse.Models.CommonResponse`1[[StudentCourse.DTOs.CourseDto, StudentCourse, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-06-10 14:26:47.648 +05:30 [INF] Executed action StudentCourse.Controllers.CourseController.UpdateCourse (StudentCourse) in 155.9906ms
+2026-06-10 14:26:47.652 +05:30 [INF] Executed endpoint 'StudentCourse.Controllers.CourseController.UpdateCourse (StudentCourse)'
+2026-06-10 14:26:47.657 +05:30 [INF] Request finished HTTP/1.1 PUT http://localhost:5228/api/Course/2 - 200 null application/json; charset=utf-8 182.2723ms
+2026-06-10 14:27:24.404 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5228/api/Course/all - null null
+2026-06-10 14:27:24.413 +05:30 [INF] Executing endpoint 'StudentCourse.Controllers.CourseController.GetCourseWithStudent (StudentCourse)'
+2026-06-10 14:27:24.420 +05:30 [INF] Route matched with {action = "GetCourseWithStudent", controller = "Course"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetCourseWithStudent() on controller StudentCourse.Controllers.CourseController (StudentCourse).
+2026-06-10 14:27:24.427 +05:30 [INF] Getting all courses with students
+2026-06-10 14:27:24.564 +05:30 [INF] Executed DbCommand (14ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[CourseName], [c].[Id], [t].[Name], [t].[StudentId], [t].[CourseId], [t].[Id]
+FROM [Courses] AS [c]
+LEFT JOIN (
+    SELECT [s0].[Name], [s].[StudentId], [s].[CourseId], [s0].[Id]
+    FROM [StudentCourses] AS [s]
+    INNER JOIN [Students] AS [s0] ON [s].[StudentId] = [s0].[Id]
+) AS [t] ON [c].[Id] = [t].[CourseId]
+ORDER BY [c].[Id], [t].[StudentId], [t].[CourseId]
+2026-06-10 14:27:24.578 +05:30 [INF] Executing OkObjectResult, writing value of type 'StudentCourse.Models.CommonResponse`1[[System.Collections.Generic.List`1[[StudentCourse.DTOs.CourseWithStudentsDto, StudentCourse, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-06-10 14:27:24.590 +05:30 [INF] Executed action StudentCourse.Controllers.CourseController.GetCourseWithStudent (StudentCourse) in 164.1167ms
+2026-06-10 14:27:24.596 +05:30 [INF] Executed endpoint 'StudentCourse.Controllers.CourseController.GetCourseWithStudent (StudentCourse)'
+2026-06-10 14:27:24.604 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5228/api/Course/all - 200 null application/json; charset=utf-8 199.534ms
+2026-06-10 14:28:19.354 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5228/api/Student - application/json 66
+2026-06-10 14:28:19.365 +05:30 [INF] Executing endpoint 'StudentCourse.Controllers.StudentController.AddStudent (StudentCourse)'
+2026-06-10 14:28:19.371 +05:30 [INF] Route matched with {action = "AddStudent", controller = "Student"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult AddStudent(StudentCourse.DTOs.CreateStudentDto) on controller StudentCourse.Controllers.StudentController (StudentCourse).
+2026-06-10 14:28:19.386 +05:30 [INF] Adding student tharu
+2026-06-10 14:28:19.420 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (Size = 100), @p2='?' (Size = 50)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Students] ([Age], [Email], [Name])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2);
+2026-06-10 14:28:19.429 +05:30 [INF] Student created with ID 1
+2026-06-10 14:28:19.432 +05:30 [INF] Executing OkObjectResult, writing value of type 'StudentCourse.Models.CommonResponse`1[[StudentCourse.DTOs.StudentDto, StudentCourse, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-06-10 14:28:19.439 +05:30 [INF] Executed action StudentCourse.Controllers.StudentController.AddStudent (StudentCourse) in 62.5945ms
+2026-06-10 14:28:19.445 +05:30 [INF] Executed endpoint 'StudentCourse.Controllers.StudentController.AddStudent (StudentCourse)'
+2026-06-10 14:28:19.453 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5228/api/Student - 200 null application/json; charset=utf-8 99.2812ms
+2026-06-10 14:28:35.316 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5228/api/Student - application/json 68
+2026-06-10 14:28:35.323 +05:30 [INF] Executing endpoint 'StudentCourse.Controllers.StudentController.AddStudent (StudentCourse)'
+2026-06-10 14:28:35.327 +05:30 [INF] Route matched with {action = "AddStudent", controller = "Student"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult AddStudent(StudentCourse.DTOs.CreateStudentDto) on controller StudentCourse.Controllers.StudentController (StudentCourse).
+2026-06-10 14:28:35.333 +05:30 [INF] Adding student vishmi
+2026-06-10 14:28:35.340 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (Size = 100), @p2='?' (Size = 50)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Students] ([Age], [Email], [Name])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2);
+2026-06-10 14:28:35.346 +05:30 [INF] Student created with ID 2
+2026-06-10 14:28:35.350 +05:30 [INF] Executing OkObjectResult, writing value of type 'StudentCourse.Models.CommonResponse`1[[StudentCourse.DTOs.StudentDto, StudentCourse, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-06-10 14:28:35.353 +05:30 [INF] Executed action StudentCourse.Controllers.StudentController.AddStudent (StudentCourse) in 20.9263ms
+2026-06-10 14:28:35.357 +05:30 [INF] Executed endpoint 'StudentCourse.Controllers.StudentController.AddStudent (StudentCourse)'
+2026-06-10 14:28:35.361 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5228/api/Student - 200 null application/json; charset=utf-8 44.5516ms
+2026-06-10 14:28:46.521 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5228/api/Student - application/json 62
+2026-06-10 14:28:46.529 +05:30 [INF] Executing endpoint 'StudentCourse.Controllers.StudentController.AddStudent (StudentCourse)'
+2026-06-10 14:28:46.533 +05:30 [INF] Route matched with {action = "AddStudent", controller = "Student"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult AddStudent(StudentCourse.DTOs.CreateStudentDto) on controller StudentCourse.Controllers.StudentController (StudentCourse).
+2026-06-10 14:28:46.540 +05:30 [INF] Adding student ima
+2026-06-10 14:28:46.547 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (Size = 100), @p2='?' (Size = 50)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Students] ([Age], [Email], [Name])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2);
+2026-06-10 14:28:46.551 +05:30 [INF] Student created with ID 3
+2026-06-10 14:28:46.553 +05:30 [INF] Executing OkObjectResult, writing value of type 'StudentCourse.Models.CommonResponse`1[[StudentCourse.DTOs.StudentDto, StudentCourse, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-06-10 14:28:46.556 +05:30 [INF] Executed action StudentCourse.Controllers.StudentController.AddStudent (StudentCourse) in 17.0935ms
+2026-06-10 14:28:46.559 +05:30 [INF] Executed endpoint 'StudentCourse.Controllers.StudentController.AddStudent (StudentCourse)'
+2026-06-10 14:28:46.562 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5228/api/Student - 200 null application/json; charset=utf-8 41.1617ms
+2026-06-10 14:29:00.040 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5228/api/Student - application/json 70
+2026-06-10 14:29:00.047 +05:30 [INF] Executing endpoint 'StudentCourse.Controllers.StudentController.AddStudent (StudentCourse)'
+2026-06-10 14:29:00.050 +05:30 [INF] Route matched with {action = "AddStudent", controller = "Student"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult AddStudent(StudentCourse.DTOs.CreateStudentDto) on controller StudentCourse.Controllers.StudentController (StudentCourse).
+2026-06-10 14:29:00.056 +05:30 [INF] Adding student mishara
+2026-06-10 14:29:00.064 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (Size = 100), @p2='?' (Size = 50)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Students] ([Age], [Email], [Name])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2);
+2026-06-10 14:29:00.070 +05:30 [INF] Student created with ID 4
+2026-06-10 14:29:00.073 +05:30 [INF] Executing OkObjectResult, writing value of type 'StudentCourse.Models.CommonResponse`1[[StudentCourse.DTOs.StudentDto, StudentCourse, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-06-10 14:29:00.076 +05:30 [INF] Executed action StudentCourse.Controllers.StudentController.AddStudent (StudentCourse) in 21.3659ms
+2026-06-10 14:29:00.080 +05:30 [INF] Executed endpoint 'StudentCourse.Controllers.StudentController.AddStudent (StudentCourse)'
+2026-06-10 14:29:00.083 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5228/api/Student - 200 null application/json; charset=utf-8 42.5048ms
+2026-06-10 14:29:48.993 +05:30 [INF] Request starting HTTP/1.1 PUT http://localhost:5228/api/Student/4 - application/json 70
+2026-06-10 14:29:49.008 +05:30 [INF] Executing endpoint 'StudentCourse.Controllers.StudentController.UpdateStudent (StudentCourse)'
+2026-06-10 14:29:49.019 +05:30 [INF] Route matched with {action = "UpdateStudent", controller = "Student"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult UpdateStudent(Int32, StudentCourse.DTOs.UpdateStudentDto) on controller StudentCourse.Controllers.StudentController (StudentCourse).
+2026-06-10 14:29:49.035 +05:30 [INF] Updating a student
+2026-06-10 14:29:49.058 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [s].[Id], [s].[Age], [s].[Email], [s].[Name]
+FROM [Students] AS [s]
+WHERE [s].[Id] = @__p_0
+2026-06-10 14:29:49.074 +05:30 [INF] Executed DbCommand (5ms) [Parameters=[@p1='?' (DbType = Int32), @p0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Students] SET [Age] = @p0
+OUTPUT 1
+WHERE [Id] = @p1;
+2026-06-10 14:29:49.083 +05:30 [INF] Updated a student
+2026-06-10 14:29:49.086 +05:30 [INF] Executing OkObjectResult, writing value of type 'StudentCourse.Models.CommonResponse`1[[StudentCourse.DTOs.StudentDto, StudentCourse, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-06-10 14:29:49.092 +05:30 [INF] Executed action StudentCourse.Controllers.StudentController.UpdateStudent (StudentCourse) in 64.6004ms
+2026-06-10 14:29:49.096 +05:30 [INF] Executed endpoint 'StudentCourse.Controllers.StudentController.UpdateStudent (StudentCourse)'
+2026-06-10 14:29:49.100 +05:30 [INF] Request finished HTTP/1.1 PUT http://localhost:5228/api/Student/4 - 200 null application/json; charset=utf-8 107.2971ms
+2026-06-10 14:30:22.077 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5228/api/Student/1/courses/1 - application/json 37
+2026-06-10 14:30:22.085 +05:30 [INF] Executing endpoint 'StudentCourse.Controllers.StudentController.EnrollStudent (StudentCourse)'
+2026-06-10 14:30:22.092 +05:30 [INF] Route matched with {action = "EnrollStudent", controller = "Student"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult EnrollStudent(Int32, StudentCourse.DTOs.EnrollStudentDto, Int32) on controller StudentCourse.Controllers.StudentController (StudentCourse).
+2026-06-10 14:30:22.102 +05:30 [INF] Enrolling a student with ID 0
+2026-06-10 14:30:22.147 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[@__dto_StudentId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[Age], [t].[Email], [t].[Name], [s0].[StudentId], [s0].[CourseId]
+FROM (
+    SELECT TOP(1) [s].[Id], [s].[Age], [s].[Email], [s].[Name]
+    FROM [Students] AS [s]
+    WHERE [s].[Id] = @__dto_StudentId_0
+) AS [t]
+LEFT JOIN [StudentCourses] AS [s0] ON [t].[Id] = [s0].[StudentId]
+ORDER BY [t].[Id], [s0].[StudentId]
+2026-06-10 14:30:22.170 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[@__dto_CourseId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [c].[Id], [c].[CourseName], [c].[Duration]
+FROM [Courses] AS [c]
+WHERE [c].[Id] = @__dto_CourseId_0
+2026-06-10 14:30:22.179 +05:30 [WRN] Student or Course not found. StudentId: 0, CourseId: 0
+2026-06-10 14:30:22.185 +05:30 [INF] Executing NotFoundObjectResult, writing value of type 'StudentCourse.Models.CommonResponse`1[[System.Object, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-06-10 14:30:22.193 +05:30 [INF] Executed action StudentCourse.Controllers.StudentController.EnrollStudent (StudentCourse) in 95.7487ms
+2026-06-10 14:30:22.197 +05:30 [INF] Executed endpoint 'StudentCourse.Controllers.StudentController.EnrollStudent (StudentCourse)'
+2026-06-10 14:30:22.200 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5228/api/Student/1/courses/1 - 404 null application/json; charset=utf-8 123.1738ms
+2026-06-10 14:30:30.681 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5228/api/Student/1/courses/2 - application/json 37
+2026-06-10 14:30:30.694 +05:30 [INF] Executing endpoint 'StudentCourse.Controllers.StudentController.EnrollStudent (StudentCourse)'
+2026-06-10 14:30:30.698 +05:30 [INF] Route matched with {action = "EnrollStudent", controller = "Student"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult EnrollStudent(Int32, StudentCourse.DTOs.EnrollStudentDto, Int32) on controller StudentCourse.Controllers.StudentController (StudentCourse).
+2026-06-10 14:30:30.706 +05:30 [INF] Enrolling a student with ID 0
+2026-06-10 14:30:30.712 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__dto_StudentId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[Age], [t].[Email], [t].[Name], [s0].[StudentId], [s0].[CourseId]
+FROM (
+    SELECT TOP(1) [s].[Id], [s].[Age], [s].[Email], [s].[Name]
+    FROM [Students] AS [s]
+    WHERE [s].[Id] = @__dto_StudentId_0
+) AS [t]
+LEFT JOIN [StudentCourses] AS [s0] ON [t].[Id] = [s0].[StudentId]
+ORDER BY [t].[Id], [s0].[StudentId]
+2026-06-10 14:30:30.720 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__dto_CourseId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [c].[Id], [c].[CourseName], [c].[Duration]
+FROM [Courses] AS [c]
+WHERE [c].[Id] = @__dto_CourseId_0
+2026-06-10 14:30:30.727 +05:30 [WRN] Student or Course not found. StudentId: 0, CourseId: 0
+2026-06-10 14:30:30.730 +05:30 [INF] Executing NotFoundObjectResult, writing value of type 'StudentCourse.Models.CommonResponse`1[[System.Object, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-06-10 14:30:30.735 +05:30 [INF] Executed action StudentCourse.Controllers.StudentController.EnrollStudent (StudentCourse) in 31.0389ms
+2026-06-10 14:30:30.740 +05:30 [INF] Executed endpoint 'StudentCourse.Controllers.StudentController.EnrollStudent (StudentCourse)'
+2026-06-10 14:30:30.743 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5228/api/Student/1/courses/2 - 404 null application/json; charset=utf-8 61.9552ms
+2026-06-10 14:32:18.583 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5228/api/Student/1/courses/2 - application/json 37
+2026-06-10 14:32:18.592 +05:30 [INF] Executing endpoint 'StudentCourse.Controllers.StudentController.EnrollStudent (StudentCourse)'
+2026-06-10 14:32:18.596 +05:30 [INF] Route matched with {action = "EnrollStudent", controller = "Student"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult EnrollStudent(Int32, StudentCourse.DTOs.EnrollStudentDto, Int32) on controller StudentCourse.Controllers.StudentController (StudentCourse).
+2026-06-10 14:32:18.602 +05:30 [INF] Enrolling a student with ID 0
+2026-06-10 14:32:18.609 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[@__dto_StudentId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[Age], [t].[Email], [t].[Name], [s0].[StudentId], [s0].[CourseId]
+FROM (
+    SELECT TOP(1) [s].[Id], [s].[Age], [s].[Email], [s].[Name]
+    FROM [Students] AS [s]
+    WHERE [s].[Id] = @__dto_StudentId_0
+) AS [t]
+LEFT JOIN [StudentCourses] AS [s0] ON [t].[Id] = [s0].[StudentId]
+ORDER BY [t].[Id], [s0].[StudentId]
+2026-06-10 14:32:18.614 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__dto_CourseId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [c].[Id], [c].[CourseName], [c].[Duration]
+FROM [Courses] AS [c]
+WHERE [c].[Id] = @__dto_CourseId_0
+2026-06-10 14:32:18.618 +05:30 [WRN] Student or Course not found. StudentId: 0, CourseId: 0
+2026-06-10 14:32:18.621 +05:30 [INF] Executing NotFoundObjectResult, writing value of type 'StudentCourse.Models.CommonResponse`1[[System.Object, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-06-10 14:32:18.624 +05:30 [INF] Executed action StudentCourse.Controllers.StudentController.EnrollStudent (StudentCourse) in 23.2318ms
+2026-06-10 14:32:18.627 +05:30 [INF] Executed endpoint 'StudentCourse.Controllers.StudentController.EnrollStudent (StudentCourse)'
+2026-06-10 14:32:18.629 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5228/api/Student/1/courses/2 - 404 null application/json; charset=utf-8 46.4374ms
+2026-06-10 14:32:41.560 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5228/api/Student/all - null null
+2026-06-10 14:32:41.568 +05:30 [INF] Executing endpoint 'StudentCourse.Controllers.StudentController.GetStudentWithCourse (StudentCourse)'
+2026-06-10 14:32:41.573 +05:30 [INF] Route matched with {action = "GetStudentWithCourse", controller = "Student"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetStudentWithCourse() on controller StudentCourse.Controllers.StudentController (StudentCourse).
+2026-06-10 14:32:41.579 +05:30 [INF] Getting all students with courses
+2026-06-10 14:32:41.604 +05:30 [INF] Executed DbCommand (9ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [s].[Name], [s].[Id], [t].[CourseName], [t].[StudentId], [t].[CourseId], [t].[Id]
+FROM [Students] AS [s]
+LEFT JOIN (
+    SELECT [c].[CourseName], [s0].[StudentId], [s0].[CourseId], [c].[Id]
+    FROM [StudentCourses] AS [s0]
+    INNER JOIN [Courses] AS [c] ON [s0].[CourseId] = [c].[Id]
+) AS [t] ON [s].[Id] = [t].[StudentId]
+ORDER BY [s].[Id], [t].[StudentId], [t].[CourseId]
+2026-06-10 14:32:41.610 +05:30 [INF] Executing OkObjectResult, writing value of type 'StudentCourse.Models.CommonResponse`1[[System.Collections.Generic.List`1[[StudentCourse.DTOs.StudentWithCoursesDto, StudentCourse, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-06-10 14:32:41.615 +05:30 [INF] Executed action StudentCourse.Controllers.StudentController.GetStudentWithCourse (StudentCourse) in 37.4899ms
+2026-06-10 14:32:41.618 +05:30 [INF] Executed endpoint 'StudentCourse.Controllers.StudentController.GetStudentWithCourse (StudentCourse)'
+2026-06-10 14:32:41.620 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5228/api/Student/all - 200 null application/json; charset=utf-8 60.5951ms
+2026-06-10 14:33:10.991 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5228/api/Student/2 - null null
+2026-06-10 14:33:10.999 +05:30 [INF] Executing endpoint 'StudentCourse.Controllers.StudentController.GetStudentById (StudentCourse)'
+2026-06-10 14:33:11.004 +05:30 [INF] Route matched with {action = "GetStudentById", controller = "Student"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetStudentById(Int32) on controller StudentCourse.Controllers.StudentController (StudentCourse).
+2026-06-10 14:33:11.010 +05:30 [INF] Getting student with ID 2
+2026-06-10 14:33:11.029 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[Age], [t].[Email], [t].[Name], [t0].[StudentId], [t0].[CourseId], [t0].[Id], [t0].[CourseName], [t0].[Duration]
+FROM (
+    SELECT TOP(1) [s].[Id], [s].[Age], [s].[Email], [s].[Name]
+    FROM [Students] AS [s]
+    WHERE [s].[Id] = @__id_0
+) AS [t]
+LEFT JOIN (
+    SELECT [s0].[StudentId], [s0].[CourseId], [c].[Id], [c].[CourseName], [c].[Duration]
+    FROM [StudentCourses] AS [s0]
+    INNER JOIN [Courses] AS [c] ON [s0].[CourseId] = [c].[Id]
+) AS [t0] ON [t].[Id] = [t0].[StudentId]
+ORDER BY [t].[Id], [t0].[StudentId], [t0].[CourseId]
+2026-06-10 14:33:11.036 +05:30 [INF] Student with ID 2 retrieved successfully
+2026-06-10 14:33:11.038 +05:30 [INF] Executing OkObjectResult, writing value of type 'StudentCourse.Models.CommonResponse`1[[StudentCourse.DTOs.StudentDetailsDto, StudentCourse, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-06-10 14:33:11.043 +05:30 [INF] Executed action StudentCourse.Controllers.StudentController.GetStudentById (StudentCourse) in 35.2511ms
+2026-06-10 14:33:11.046 +05:30 [INF] Executed endpoint 'StudentCourse.Controllers.StudentController.GetStudentById (StudentCourse)'
+2026-06-10 14:33:11.048 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5228/api/Student/2 - 200 null application/json; charset=utf-8 56.6512ms
+2026-06-10 14:38:25.958 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5228/swagger/index.html - null null
+2026-06-10 14:38:25.993 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5228/swagger/index.html - 200 null text/html;charset=utf-8 35.0203ms
+2026-06-10 14:38:26.135 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5228/swagger/v1/swagger.json - null null
+2026-06-10 14:38:26.207 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5228/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 71.3955ms
+2026-06-10 14:38:44.151 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5228/api/Student/1/courses/1 - application/json 37
+2026-06-10 14:38:44.162 +05:30 [INF] Executing endpoint 'StudentCourse.Controllers.StudentController.EnrollStudent (StudentCourse)'
+2026-06-10 14:38:44.165 +05:30 [INF] Route matched with {action = "EnrollStudent", controller = "Student"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult EnrollStudent(Int32, StudentCourse.DTOs.EnrollStudentDto, Int32) on controller StudentCourse.Controllers.StudentController (StudentCourse).
+2026-06-10 14:38:44.171 +05:30 [INF] Enrolling a student with ID 0
+2026-06-10 14:38:44.183 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[@__dto_StudentId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[Age], [t].[Email], [t].[Name], [s0].[StudentId], [s0].[CourseId]
+FROM (
+    SELECT TOP(1) [s].[Id], [s].[Age], [s].[Email], [s].[Name]
+    FROM [Students] AS [s]
+    WHERE [s].[Id] = @__dto_StudentId_0
+) AS [t]
+LEFT JOIN [StudentCourses] AS [s0] ON [t].[Id] = [s0].[StudentId]
+ORDER BY [t].[Id], [s0].[StudentId]
+2026-06-10 14:38:44.189 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__dto_CourseId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [c].[Id], [c].[CourseName], [c].[Duration]
+FROM [Courses] AS [c]
+WHERE [c].[Id] = @__dto_CourseId_0
+2026-06-10 14:38:44.192 +05:30 [WRN] Student or Course not found. StudentId: 0, CourseId: 0
+2026-06-10 14:38:44.194 +05:30 [INF] Executing NotFoundObjectResult, writing value of type 'StudentCourse.Models.CommonResponse`1[[System.Object, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-06-10 14:38:44.196 +05:30 [INF] Executed action StudentCourse.Controllers.StudentController.EnrollStudent (StudentCourse) in 26.4128ms
+2026-06-10 14:38:44.198 +05:30 [INF] Executed endpoint 'StudentCourse.Controllers.StudentController.EnrollStudent (StudentCourse)'
+2026-06-10 14:38:44.200 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5228/api/Student/1/courses/1 - 404 null application/json; charset=utf-8 49.2075ms
+2026-06-10 14:42:25.783 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5228/swagger/index.html - null null
+2026-06-10 14:42:25.790 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5228/swagger/index.html - 200 null text/html;charset=utf-8 7.5167ms
+2026-06-10 14:42:25.866 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5228/swagger/v1/swagger.json - null null
+2026-06-10 14:42:25.880 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5228/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 13.6546ms
+2026-06-10 14:42:30.740 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5228/swagger/index.html - null null
+2026-06-10 14:42:30.741 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5228/swagger/index.html - 200 null text/html;charset=utf-8 1.4979ms
+2026-06-10 14:42:30.789 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5228/swagger/v1/swagger.json - null null
+2026-06-10 14:42:30.802 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5228/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 13.2344ms
+2026-06-10 14:42:39.730 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5228/swagger/index.html - null null
+2026-06-10 14:42:39.739 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5228/swagger/index.html - 200 null text/html;charset=utf-8 9.3135ms
+2026-06-10 14:42:39.784 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5228/swagger/v1/swagger.json - null null
+2026-06-10 14:42:39.797 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5228/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 12.5661ms
+2026-06-10 14:42:51.079 +05:30 [INF] Application is shutting down...
