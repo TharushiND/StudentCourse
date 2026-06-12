@@ -1,6 +1,10 @@
 using Microsoft.EntityFrameworkCore;
 using StudentCourse.Data;
 using Serilog;
+using StudentCourse.Repositories;
+using StudentCourse.Repositories.Interfaces;
+using StudentCourse.Services;
+using StudentCourse.Services.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,9 +26,19 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+//appDbContext
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(
         builder.Configuration.GetConnectionString("DefaultConnection")));
+
+//repositories registration
+builder.Services.AddScoped<IStudentRepository, StudentRepository>();
+builder.Services.AddScoped<ICourseRepository, CourseRepository>();
+
+//services registration
+builder.Services.AddScoped<IStudentService, StudentService>();
+builder.Services.AddScoped<ICourseService, CourseService>();
+
 
 var app = builder.Build();
 

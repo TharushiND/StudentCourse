@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using StudentCourse.Data;
 using StudentCourse.DTOs;
 using StudentCourse.Models;
+using StudentCourse.Services.Interfaces;
 
 namespace StudentCourse.Controllers
 {
@@ -10,12 +11,12 @@ namespace StudentCourse.Controllers
     [Route("api/[controller]")]
     public class StudentController : ControllerBase
     {
-        private readonly AppDbContext _context;
+        private readonly IStudentService _studentService;
         private readonly ILogger<StudentController> _logger;
 
-        public StudentController(AppDbContext context, ILogger<StudentController> logger)
+        public StudentController(IStudentService studentService, ILogger<StudentController> logger)
         {
-            _context = context;
+            _studentService = studentService;
             _logger = logger;
         }
 
@@ -27,21 +28,16 @@ namespace StudentCourse.Controllers
             try
             {
                 _logger.LogInformation("Getting all students");
-                var result = _context.Students.Select(s => new StudentDto
-                {
-                    Id = s.Id,
-                    Name = s.Name,
-                    Email = s.Email,
-                    Age = s.Age
-                }).ToList();
+                var students = _studentService.GetAllStudents();
                 _logger.LogInformation("200 OK - Retrieved all students successfully");
+                
                 var response =
                 new CommonResponse<List<StudentDto>>
                 {
                     Success = true,
                     StatusCode = 200,
                     Message = "Students retrieved successfully",
-                    Data = result
+                    Data = students
                 };
 
                 return Ok(response);
@@ -70,38 +66,21 @@ namespace StudentCourse.Controllers
                 _logger.LogInformation(
                 "Adding student {Name}",
                 dto.Name);
+                var student = _studentService.AddStudent(dto);
 
-                var student = new Student
-                {
-                    Name = dto.Name,
-                    Email = dto.Email,
-                    Age = dto.Age
-                };
-
-                _context.Students.Add(student);
-                _context.SaveChanges();
 
                 _logger.LogInformation(
                 "Student created with ID {Id}",
                 student.Id);
 
-                var result = new StudentDto
-                {
-                    Id = student.Id,
-                    Name = student.Name,
-                    Email = student.Email,
-                    Age = student.Age
-                };
-                var response =
-                new CommonResponse<StudentDto>
-                {
-                    Success = true,
-                    StatusCode = 201,
-                    Message = "Students created successfully",
-                    Data = result
-                };
-
-                return Ok(response);
+                return StatusCode(201,
+                    new CommonResponse<StudentDto>
+                    {
+                        Success = true,
+                        StatusCode = 201,
+                        Message = "Student created successfully",
+                        Data = student
+                    });
             }
             catch (Exception ex)
             {
@@ -124,7 +103,7 @@ namespace StudentCourse.Controllers
             try
             {
                 _logger.LogInformation("Updating a student");
-                var student = _context.Students.Find(id);
+                var student = _studentService.UpdateStudent(id, dto);
 
                 if (student == null)
                 {
@@ -140,30 +119,14 @@ namespace StudentCourse.Controllers
                                 });
                 }
 
-                student.Name = dto.Name;
-                student.Email = dto.Email;
-                student.Age = dto.Age;
-
-                _context.SaveChanges();
-                _logger.LogInformation("Updated a student");
-
-                var result = new StudentDto
-                {
-                    Id = student.Id,
-                    Name = student.Name,
-                    Email = student.Email,
-                    Age = student.Age
-                };
-                var response =
+                return Ok(
                     new CommonResponse<StudentDto>
                     {
                         Success = true,
                         StatusCode = 200,
                         Message = "Student updated successfully",
-                        Data = result
-                    };
-
-                return Ok(response);
+                        Data = student
+                    });
             }
             catch (Exception ex)
             {
@@ -186,9 +149,9 @@ namespace StudentCourse.Controllers
             try
             {
                 _logger.LogInformation("Deleting a student");
-                var student = _context.Students.Find(id);
+                var deleted = _studentService.DeleteStudent(id);
 
-                if (student == null)
+                if (!deleted)
                 {
                     _logger.LogWarning(
                     "Student with ID {Id} not found", id);
@@ -198,14 +161,11 @@ namespace StudentCourse.Controllers
                                     Success = false,
                                     StatusCode = 404,
                                     Message = "Student not found",
-                                    Data = null
+                                    Data = "Student not found"
                                 });
                 }
 
-                _context.Students.Remove(student);
-
-                _context.SaveChanges();
-                _logger.LogInformation("Student with Id {Id} was deleted", student.Id);
+                _logger.LogInformation("Student was deleted");
                 return Ok(
                     new CommonResponse<string>
                     {
@@ -236,14 +196,10 @@ namespace StudentCourse.Controllers
             try
             {
                 _logger.LogInformation("Enrolling a student with ID {Id}", dto.StudentId);
-                var student = _context.Students
-                    .Include(s => s.StudentCourses)
-                    .FirstOrDefault(s => s.Id == dto.StudentId);
+                var enrolled = _studentService.EnrollStudent(dto);
 
-                var course = _context.Courses
-                    .FirstOrDefault(c => c.Id == dto.CourseId);
-
-                if (student == null || course == null)
+                
+                if (!enrolled)
                 {
                     _logger.LogWarning(
                     "Student or Course not found. StudentId: {StudentId}, CourseId: {CourseId}", dto.StudentId, dto.CourseId);
@@ -257,25 +213,15 @@ namespace StudentCourse.Controllers
                                     Data = null
                                 });
                 }
-                var studentCourse = new StudentCourseMapping
-                {
-                    StudentId = dto.StudentId,
-                    CourseId = dto.CourseId
-                };
 
-                _context.StudentCourses.Add(studentCourse);
-                _context.SaveChanges();
-                _logger.LogInformation("Student enrolled with ID {Id}", dto.StudentId);
-                var response =
+                return Ok(
                     new CommonResponse<string>
                     {
                         Success = true,
                         StatusCode = 200,
-                        Message = "Student enrolled successfully",
-                        Data = "Enrollment successful"
-                    };
-
-                return Ok(response);
+                        Message = "Enrollment successful",
+                        Data = "Student enrolled successfully"
+                    });
             }
 
             catch (Exception ex)
@@ -303,15 +249,7 @@ namespace StudentCourse.Controllers
             {
                 _logger.LogInformation("Getting all students with courses");
 
-                var result = _context.Students
-                    .Include(s => s.StudentCourses)
-                        .ThenInclude(sc => sc.Course)
-                    .Select(s => new StudentWithCoursesDto
-                    {
-                        StudentName = s.Name,
-                        Courses = s.StudentCourses.Select(sc => sc.Course.CourseName).ToList()
-                    })
-                    .ToList();
+                var result = _studentService.GetStudentsWithCourses();
 
                 var response =
                     new CommonResponse<List<StudentWithCoursesDto>>
@@ -348,10 +286,7 @@ namespace StudentCourse.Controllers
                     "Getting student with ID {Id}",
                     id);
 
-                var student = _context.Students
-                    .Include(s => s.StudentCourses)
-                    .ThenInclude(sc => sc.Course)
-                    .FirstOrDefault(s => s.Id == id);
+                var student = _studentService.GetStudentById(id);
 
                 if (student == null)
                 {
@@ -369,37 +304,18 @@ namespace StudentCourse.Controllers
                                 });
                 }
 
-                var result = new StudentDetailsDto
-                {
-                    Id = student.Id,
-                    Name = student.Name,
-                    Email = student.Email,
-                    Age = student.Age,
-
-                    Courses = student.StudentCourses
-                    .Select(sc => new CourseDto
-                    {
-                        Id = sc.Course.Id,
-                        CourseName = sc.Course.CourseName,
-                        Duration = sc.Course.Duration
-                    })
-                    .ToList()
-                };
-
                 _logger.LogInformation(
                     "Student with ID {Id} retrieved successfully",
                     id);
 
-                var response =
-                new CommonResponse<StudentDetailsDto>
-                {
-                    Success = true,
-                    StatusCode = 200,
-                    Message = "Student details retrieved successfully",
-                    Data = result
-                };
-
-                return Ok(response);
+                return Ok(
+                    new CommonResponse<StudentDetailsDto>
+                    {
+                        Success = true,
+                        StatusCode = 200,
+                        Message = "Student retrieved successfully",
+                        Data = student
+                    });
             }
             catch (Exception ex)
             {

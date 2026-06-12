@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using StudentCourse.Data;
 using StudentCourse.DTOs;
 using StudentCourse.Models;
+using StudentCourse.Services.Interfaces;
 
 namespace StudentCourse.Controllers
 {
@@ -10,12 +11,12 @@ namespace StudentCourse.Controllers
     [Route("api/[controller]")]
     public class CourseController : ControllerBase
     {
-        private readonly AppDbContext _context;
+        private readonly ICourseService _courseService;
         private readonly ILogger<CourseController> _logger;
 
-        public CourseController(AppDbContext context, ILogger<CourseController> logger)
+        public CourseController(ICourseService courseService, ILogger<CourseController> logger)
         {
-            _context = context;
+            _courseService = courseService;
             _logger = logger;
 
         }
@@ -26,23 +27,17 @@ namespace StudentCourse.Controllers
             try
             {
                 _logger.LogInformation("Getting all courses");
-                var result = _context.Courses.Select(c => new CourseDto
-                {
-                    Id = c.Id,
-                    CourseName = c.CourseName,
-                    Duration = c.Duration,
-                }).ToList();
+                var courses = _courseService.GetAllCourses();
                 _logger.LogInformation("200 OK - Retrieved all courses successfully");
-                var response =
-                new CommonResponse<List<CourseDto>>
-                {
-                    Success = true,
-                    StatusCode = 200,
-                    Message = "Courses retrieved successfully",
-                    Data = result
-                };
 
-                return Ok(response);
+                return Ok(
+                    new CommonResponse<List<CourseDto>>
+                    {
+                        Success = true,
+                        StatusCode = 200,
+                        Message = "Courses retrieved successfully",
+                        Data = courses
+                    });
             }
             catch (Exception ex)
             {
@@ -68,35 +63,21 @@ namespace StudentCourse.Controllers
                 "Adding course {CourseName}",
                 dto.CourseName);
 
-                var course = new Course
-                {
-                    CourseName = dto.CourseName,
-                    Duration = dto.Duration
-                };
-
-                _context.Courses.Add(course);
-                _context.SaveChanges();
+                var course =_courseService.AddCourse(dto);
 
                 _logger.LogInformation(
                 "course created with ID {Id}",
                 course.Id);
 
-                var result = new CourseDto
-                {
-                    Id = course.Id,
-                    CourseName = dto.CourseName,
-                    Duration = dto.Duration
-                };
-                var response =
-                new CommonResponse<CourseDto>
-                {
-                    Success = true,
-                    StatusCode = 201,
-                    Message = "Course created successfully",
-                    Data = result
-                };
-
-                return Ok(response);
+                return StatusCode(
+                    201,
+                    new CommonResponse<CourseDto>
+                    {
+                        Success = true,
+                        StatusCode = 201,
+                        Message = "Course created successfully",
+                        Data = course
+                    });
 
             }
             catch (Exception ex)
@@ -120,36 +101,28 @@ namespace StudentCourse.Controllers
             try
             {
                 _logger.LogInformation("Updating a course");
-                var course = _context.Courses.Find(id);
+                var course = _courseService.UpdateCourse(id, dto);
 
                 if (course == null)
                 {
-                    return NotFound();
-                }
-
-                course.CourseName = dto.CourseName;
-                course.Duration = dto.Duration;
-
-                _context.SaveChanges();
-                _logger.LogInformation("Updated a course");
-
-                var result = new CourseDto
-                {
-                    Id = course.Id,
-                    CourseName = dto.CourseName,
-                    Duration = dto.Duration
-                };
-                var response =
-                    new CommonResponse<CourseDto>
+                    return NotFound(
+                        new CommonResponse<object>
                     {
-                        Success = true,
-                        StatusCode = 200,
-                        Message = "Course updated successfully",
-                        Data = result
-                    };
-
-                return Ok(response);
-            }
+                        Success = false,
+                        StatusCode = 404,
+                        Message = "Course not found",
+                        Data = null
+                    });
+                }
+                    return Ok(
+                            new CommonResponse<CourseDto>
+                            {
+                                Success = true,
+                                StatusCode = 200,
+                                Message = "Course updated successfully",
+                                Data = course
+                            });
+                }
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Error occurred while updating the course");
@@ -166,13 +139,13 @@ namespace StudentCourse.Controllers
         }
 
         [HttpDelete("{id}")]
-        public IActionResult DeleteCourse([FromQuery]int id)
+        public IActionResult DeleteCourse([FromRoute]int id)
         {
             try
             {
-                var course = _context.Courses.Find(id);
+                var deleted = _courseService.DeleteCourse(id);
 
-                if (course == null)
+                if (!deleted)
                 {
                     return NotFound(
                         new CommonResponse<object>
@@ -184,11 +157,7 @@ namespace StudentCourse.Controllers
                         });
                 }
 
-                _context.Courses.Remove(course);
-
-                _context.SaveChanges();
-
-                _logger.LogInformation("Course with Id {Id} was deleted", course.Id);
+                _logger.LogInformation("Course was deleted");
                 return Ok(
                     new CommonResponse<string>
                     {
@@ -222,15 +191,7 @@ namespace StudentCourse.Controllers
             {
                 _logger.LogInformation("Getting all courses with students");
 
-                var result = _context.Courses
-                    .Include(c => c.StudentCourses)
-                        .ThenInclude(sc => sc.Student)
-                    .Select(c => new CourseWithStudentsDto
-                    {
-                        CourseName = c.CourseName,
-                        Students = c.StudentCourses.Select(sc => sc.Student.Name).ToList()
-                    })
-                    .ToList();
+                var result = _courseService.GetCoursesWithStudents();
 
                 var response =
                     new CommonResponse<List<CourseWithStudentsDto>>
@@ -267,12 +228,9 @@ namespace StudentCourse.Controllers
                     "Getting course with ID {Id}",
                     id);
 
-                var course = _context.Courses
-                    .Include(s => s.StudentCourses)
-                    .ThenInclude(sc => sc.Student)
-                    .FirstOrDefault(c => c.Id == id);
+                var result = _courseService.GetCourseById(id);
 
-                if (course == null)
+                if (result == null)
                 {
                     _logger.LogWarning(
                         "Course with ID {Id} not found",
@@ -283,27 +241,10 @@ namespace StudentCourse.Controllers
                                 {
                                     Success = false,
                                     StatusCode = 404,
-                                    Message = "Student not found",
+                                    Message = "course not found",
                                     Data = null
                                 });
                 }
-
-                var result = new CourseDetailsDto
-                {
-                    Id = course.Id,
-                    CourseName = course.CourseName,
-                    Duration = course.Duration,
-
-                    Students = course.StudentCourses
-                    .Select(sc => new StudentDto
-                    {
-                        Id = sc.Student.Id,
-                        Name = sc.Student.Name,
-                        Email = sc.Student.Email,
-                        Age = sc.Student.Age
-                    })
-                    .ToList()
-                };
 
                 _logger.LogInformation(
                     "Course with ID {Id} retrieved successfully",
