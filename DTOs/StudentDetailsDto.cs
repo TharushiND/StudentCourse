@@ -10,7 +10,7 @@
 
         public int? Age { get; set; }
 
-        public List<CourseDto> Courses { get; set; }
+        public List<StudentCourseDto> Courses { get; set; }
             = new();
     }
 }

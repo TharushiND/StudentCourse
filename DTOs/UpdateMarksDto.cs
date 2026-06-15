@@ -1,11 +1,9 @@
 ﻿namespace StudentCourse.DTOs
 {
-    public class EnrollStudentDto
+    public class UpdateMarksDto
     {
-        public int StudentId { get; set; }
-
         public int CourseId { get; set; }
-
+        public int StudentId { get; set; }
         public int Marks { get; set; }
     }
 }

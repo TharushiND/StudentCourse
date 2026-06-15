@@ -1,4 +1,5 @@
-﻿using StudentCourse.DTOs;
+﻿using AutoMapper;
+using StudentCourse.DTOs;
 using StudentCourse.Models;
 using StudentCourse.Repositories.Interfaces;
 using StudentCourse.Services.Interfaces;
@@ -8,25 +9,20 @@ namespace StudentCourse.Services
     public class StudentService : IStudentService
     {
         private readonly IStudentRepository _studentRepository;
+        private readonly IMapper _mapper;
 
-        public StudentService(IStudentRepository studentRepository)
+        public StudentService(IStudentRepository studentRepository, IMapper mapper)
         {
             _studentRepository = studentRepository;
+            _mapper = mapper;
         }
 
         public List<StudentDto> GetAllStudents()
         {
             var students = _studentRepository.GetAllStudents();
 
-            return students.Select(s => new StudentDto
-            {
-                Id = s.Id,
-                Name = s.Name,
-                Email = s.Email,
-                Age = s.Age
-            }).ToList();
+            return _mapper.Map<List<StudentDto>>(students);
         }
-
         public StudentDetailsDto? GetStudentById(int id)
         {
             var student = _studentRepository.GetStudentById(id);
@@ -34,41 +30,17 @@ namespace StudentCourse.Services
             if (student == null)
                 return null;
 
-            return new StudentDetailsDto
-            {
-                Id = student.Id,
-                Name = student.Name,
-                Email = student.Email,
-                Age = student.Age,
-                Courses = student.StudentCourses
-                    .Select(sc => new CourseDto
-                    {
-                        Id = sc.Course!.Id,
-                        CourseName = sc.Course.CourseName,
-                        Duration = sc.Course.Duration
-                    }).ToList()
-            };
+            return _mapper.Map<StudentDetailsDto>(student);
         }
 
         public StudentDto AddStudent(CreateStudentDto dto)
         {
-            var student = new Student
-            {
-                Name = dto.Name,
-                Email = dto.Email,
-                Age = dto.Age
-            };
+            var student = _mapper.Map<Student>(dto);
 
             _studentRepository.AddStudent(student);
             _studentRepository.SaveChanges();
 
-            return new StudentDto
-            {
-                Id = student.Id,
-                Name = student.Name,
-                Email = student.Email,
-                Age = student.Age
-            };
+            return _mapper.Map<StudentDto>(student);
         }
 
         public StudentDto? UpdateStudent(int id, UpdateStudentDto dto)
@@ -78,20 +50,12 @@ namespace StudentCourse.Services
             if (student == null)
                 return null;
 
-            student.Name = dto.Name;
-            student.Email = dto.Email;
-            student.Age = dto.Age;
+            _mapper.Map(dto, student);
 
             _studentRepository.UpdateStudent(student);
             _studentRepository.SaveChanges();
 
-            return new StudentDto
-            {
-                Id = student.Id,
-                Name = student.Name,
-                Email = student.Email,
-                Age = student.Age
-            };
+            return _mapper.Map<StudentDto>(student);
         }
 
         public bool DeleteStudent(int id)
@@ -109,11 +73,7 @@ namespace StudentCourse.Services
 
         public bool EnrollStudent(EnrollStudentDto dto)
         {
-            var studentCourse = new StudentCourseMapping
-            {
-                StudentId = dto.StudentId,
-                CourseId = dto.CourseId
-            };
+            var studentCourse = _mapper.Map<StudentCourseMapping>(dto);
 
             _studentRepository.EnrollStudent(studentCourse);
             _studentRepository.SaveChanges();
@@ -125,13 +85,7 @@ namespace StudentCourse.Services
         {
             var students = _studentRepository.GetStudentsWithCourses();
 
-            return students.Select(s => new StudentWithCoursesDto
-            {
-                StudentName = s.Name,
-                Courses = s.StudentCourses
-                    .Select(sc => sc.Course!.CourseName)
-                    .ToList()
-            }).ToList();
+            return _mapper.Map<List<StudentWithCoursesDto>>(students);
         }
     }
 }

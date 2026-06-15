@@ -1,0 +1,11 @@
+2026-06-15 11:23:18.364 +05:30 [INF] Application is shutting down...
+2026-06-15 11:23:47.136 +05:30 [INF] Serilog is working!
+2026-06-15 11:23:48.514 +05:30 [INF] Now listening on: http://localhost:5228
+2026-06-15 11:23:48.518 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2026-06-15 11:23:48.521 +05:30 [INF] Hosting environment: Development
+2026-06-15 11:23:48.522 +05:30 [INF] Content root path: C:\Users\TharushiDharmarathna\source\repos\StudentCourse
+2026-06-15 11:23:58.016 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5228/swagger/index.html - null null
+2026-06-15 11:23:58.129 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5228/swagger/index.html - 200 null text/html;charset=utf-8 113.8855ms
+2026-06-15 11:23:58.206 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5228/swagger/v1/swagger.json - null null
+2026-06-15 11:23:58.310 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5228/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 104.306ms
+2026-06-15 11:29:01.663 +05:30 [INF] Application is shutting down...
