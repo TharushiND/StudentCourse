@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using StudentCourse.Constants;
 using StudentCourse.DTOs;
 using StudentCourse.Models;
 using StudentCourse.Services.Interfaces;
@@ -27,12 +28,9 @@ namespace StudentCourse.Controllers
             try
             {
                 _logger.LogInformation(
-                    "Assigning marks for StudentId {StudentId} and CourseId {CourseId}",
-                    dto.StudentId,
-                    dto.CourseId);
+                    "Assigning marks for StudentId {StudentId} and CourseId {CourseId}",dto.StudentId,dto.CourseId);
 
-                var success =
-                    _studentCourseService.AssignMarks(dto);
+                var success =_studentCourseService.AssignMarks(dto);
 
                 if (!success)
                 {
@@ -41,7 +39,7 @@ namespace StudentCourse.Controllers
                         {
                             Success = false,
                             StatusCode = 404,
-                            Message = "Enrollment not found",
+                            Message = ErrorMessages.EnrollmentNotFound,
                             Data = null
                         });
                 }
@@ -51,15 +49,13 @@ namespace StudentCourse.Controllers
                     {
                         Success = true,
                         StatusCode = 200,
-                        Message = "Marks assigned successfully",
+                        Message = SuccessMessages.MarksAssigned,
                         Data = dto
                     });
             }
             catch (Exception ex)
             {
-                _logger.LogError(
-                    ex,
-                    "Error occurred while assigning marks");
+                _logger.LogError( ex,"Error occurred while assigning marks");
 
                 return StatusCode(
                     500,
@@ -67,36 +63,31 @@ namespace StudentCourse.Controllers
                     {
                         Success = false,
                         StatusCode = 500,
-                        Message = "Internal server error",
+                        Message = ErrorMessages.InternalServerError,
                         Data = null
                     });
             }
         }
 
         [HttpGet("student/{studentId}")]
-        public IActionResult GetMarksByStudent(
-            [FromRoute] int studentId)
+        public IActionResult GetMarksByStudent([FromRoute] int studentId)
         {
             try
             {
-                var result =
-                    _studentCourseService
-                    .GetMarksByStudent(studentId);
+                var result =_studentCourseService.GetMarksByStudent(studentId);
 
                 return Ok(
                     new CommonResponse<List<StudentMarkDto>>
                     {
                         Success = true,
                         StatusCode = 200,
-                        Message = "Student marks retrieved successfully",
+                        Message = SuccessMessages.GetMarksByStudent,
                         Data = result
                     });
             }
             catch (Exception ex)
             {
-                _logger.LogError(
-                    ex,
-                    "Error retrieving marks for student");
+                _logger.LogError(ex,"Error retrieving marks for student");
 
                 return StatusCode(
                     500,
@@ -104,36 +95,31 @@ namespace StudentCourse.Controllers
                     {
                         Success = false,
                         StatusCode = 500,
-                        Message = "Internal server error",
+                        Message = ErrorMessages.InternalServerError,
                         Data = null
                     });
             }
         }
 
         [HttpGet("course/{courseId}")]
-        public IActionResult GetMarksByCourse(
-            [FromRoute] int courseId)
+        public IActionResult GetMarksByCourse([FromRoute] int courseId)
         {
             try
             {
-                var result =
-                    _studentCourseService
-                    .GetMarksByCourse(courseId);
+                var result =_studentCourseService.GetMarksByCourse(courseId);
 
                 return Ok(
                     new CommonResponse<List<StudentMarkDto>>
                     {
                         Success = true,
                         StatusCode = 200,
-                        Message = "Course marks retrieved successfully",
+                        Message = SuccessMessages.CourseMarksRetrieved,
                         Data = result
                     });
             }
             catch (Exception ex)
             {
-                _logger.LogError(
-                    ex,
-                    "Error retrieving course marks");
+                _logger.LogError(ex,"Error retrieving course marks");
 
                 return StatusCode(
                     500,
@@ -141,21 +127,18 @@ namespace StudentCourse.Controllers
                     {
                         Success = false,
                         StatusCode = 500,
-                        Message = "Internal server error",
+                        Message = ErrorMessages.InternalServerError,
                         Data = null
                     });
             }
         }
 
         [HttpPut]
-        public IActionResult UpdateMarks(
-    [FromBody] UpdateMarksDto dto)
+        public IActionResult UpdateMarks([FromBody] UpdateMarksDto dto)
         {
             try
             {
-                var success =
-                    _studentCourseService
-                    .UpdateMarks(dto);
+                var success = _studentCourseService.UpdateMarks(dto);
 
                 if (!success)
                 {
@@ -164,7 +147,7 @@ namespace StudentCourse.Controllers
                         {
                             Success = false,
                             StatusCode = 404,
-                            Message = "Enrollment not found",
+                            Message = ErrorMessages.EnrollmentNotFound,
                             Data = null
                         });
                 }
@@ -174,15 +157,13 @@ namespace StudentCourse.Controllers
                     {
                         Success = true,
                         StatusCode = 200,
-                        Message = "Marks updated successfully",
+                        Message = SuccessMessages.MarksUpdated,
                         Data = dto
                     });
             }
             catch (Exception ex)
             {
-                _logger.LogError(
-                    ex,
-                    "Error updating marks");
+                _logger.LogError(ex,"Error updating marks");
 
                 return StatusCode(
                     500,
@@ -190,21 +171,18 @@ namespace StudentCourse.Controllers
                     {
                         Success = false,
                         StatusCode = 500,
-                        Message = "Internal server error",
+                        Message = ErrorMessages.InternalServerError,
                         Data = null
                     });
             }
         }
 
         [HttpDelete]
-        public IActionResult DeleteMarks(
-    [FromBody] DeleteMarksDto dto)
+        public IActionResult DeleteMarks([FromBody] DeleteMarksDto dto)
         {
             try
             {
-                var success =
-                    _studentCourseService
-                    .DeleteMarks(dto);
+                var success = _studentCourseService.DeleteMarks(dto);
 
                 if (!success)
                 {
@@ -213,7 +191,7 @@ namespace StudentCourse.Controllers
                         {
                             Success = false,
                             StatusCode = 404,
-                            Message = "Enrollment not found",
+                            Message = ErrorMessages.EnrollmentNotFound,
                             Data = null
                         });
                 }
@@ -223,15 +201,13 @@ namespace StudentCourse.Controllers
                     {
                         Success = true,
                         StatusCode = 200,
-                        Message = "Marks deleted successfully",
+                        Message = SuccessMessages.MarksDeleted,
                         Data = null
                     });
             }
             catch (Exception ex)
             {
-                _logger.LogError(
-                    ex,
-                    "Error deleting marks");
+                _logger.LogError(ex,"Error deleting marks");
 
                 return StatusCode(
                     500,
@@ -239,7 +215,7 @@ namespace StudentCourse.Controllers
                     {
                         Success = false,
                         StatusCode = 500,
-                        Message = "Internal server error",
+                        Message = ErrorMessages.InternalServerError,
                         Data = null
                     });
             }

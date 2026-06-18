@@ -1,5 +1,6 @@
 using FluentValidation;
 using FluentValidation.AspNetCore;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
 using StudentCourse.Data;
@@ -10,8 +11,7 @@ using StudentCourse.Repositories.Interfaces;
 using StudentCourse.Services;
 using StudentCourse.Services.Interfaces;
 using StudentCourse.Validators;
-using Microsoft.AspNetCore.Mvc;
-using StudentCourse.Models;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -30,21 +30,27 @@ builder.Host.UseSerilog();
 //validation filter
 builder.Services.AddControllers(options =>
 {
-    options.Filters
-        .Add<ValidationFilter>();
+    options.Filters.Add<ValidationFilter>();
+});
+builder.Services.Configure<ApiBehaviorOptions>(options =>
+{
+    options.SuppressModelStateInvalidFilter = true;
 });
 
+
 //automapper registering
-builder.Services.AddAutoMapper(typeof(Program));
+//builder.Services.AddAutoMapper(typeof(Program)); this duplicates the same automapper registering.
 builder.Services.AddAutoMapper(
     typeof(StudentMapper),
     typeof(CourseMapper),
     typeof(StudentCourseMapper));
 
-//register Fluent Validations
-builder.Services.AddFluentValidationAutoValidation();
 
-builder.Services.AddValidatorsFromAssemblyContaining<CreateStudentValidator>();
+//register Fluent Validations
+builder.Services.AddFluentValidationAutoValidation(); /*This turns on the automatic checking system in ASP.NET Core.
+automatically check if there is a validation rule for it before running the controller code.*/
+builder.Services.AddValidatorsFromAssemblyContaining<CreateStudentValidator>(); /*This searches your project and finds your actual validation rule classes,
+and registers them into the application's memory.*/
 
 
 
@@ -52,7 +58,7 @@ builder.Services.AddValidatorsFromAssemblyContaining<CreateStudentValidator>();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-//appDbContext
+//appDbContext,connection string
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(
         builder.Configuration.GetConnectionString("DefaultConnection")));
@@ -78,7 +84,8 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
-
+app.UseRouting();
+app.UseStaticFiles();
 app.MapControllers();
 
 app.Run();

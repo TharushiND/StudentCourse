@@ -9,3 +9,92 @@
 2026-06-15 11:23:58.206 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5228/swagger/v1/swagger.json - null null
 2026-06-15 11:23:58.310 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5228/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 104.306ms
 2026-06-15 11:29:01.663 +05:30 [INF] Application is shutting down...
+2026-06-15 12:12:23.098 +05:30 [INF] Serilog is working!
+2026-06-15 12:12:24.278 +05:30 [INF] Now listening on: http://localhost:5228
+2026-06-15 12:12:24.408 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2026-06-15 12:12:24.410 +05:30 [INF] Hosting environment: Development
+2026-06-15 12:12:24.413 +05:30 [INF] Content root path: C:\Users\TharushiDharmarathna\source\repos\StudentCourse
+2026-06-15 12:12:27.458 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5228/swagger/index.html - null null
+2026-06-15 12:12:28.307 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5228/swagger/index.html - 200 null text/html;charset=utf-8 867.373ms
+2026-06-15 12:12:28.317 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5228/_vs/browserLink - null null
+2026-06-15 12:12:28.349 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5228/_framework/aspnetcore-browser-refresh.js - null null
+2026-06-15 12:12:28.382 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5228/_framework/aspnetcore-browser-refresh.js - 200 16511 application/javascript; charset=utf-8 32.4072ms
+2026-06-15 12:12:28.466 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5228/_vs/browserLink - 200 null text/javascript; charset=UTF-8 150.9789ms
+2026-06-15 12:12:28.505 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5228/swagger/index.html - null null
+2026-06-15 12:12:28.543 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5228/swagger/index.html - 200 null text/html;charset=utf-8 38.3112ms
+2026-06-15 12:12:28.580 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5228/_framework/aspnetcore-browser-refresh.js - null null
+2026-06-15 12:12:28.581 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5228/_vs/browserLink - null null
+2026-06-15 12:12:28.613 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5228/_framework/aspnetcore-browser-refresh.js - 200 16511 application/javascript; charset=utf-8 33.5022ms
+2026-06-15 12:12:28.657 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5228/_vs/browserLink - 200 null text/javascript; charset=UTF-8 77.4529ms
+2026-06-15 12:12:28.738 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5228/swagger/v1/swagger.json - null null
+2026-06-15 12:12:28.799 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5228/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 61.2032ms
+2026-06-15 12:12:29.029 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5228/swagger/v1/swagger.json - null null
+2026-06-15 12:12:29.066 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5228/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 37.4567ms
+2026-06-15 12:12:49.622 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5228/api/Student - application/json 52
+2026-06-15 12:12:49.649 +05:30 [WRN] Failed to determine the https port for redirect.
+2026-06-15 12:12:49.662 +05:30 [INF] Executing endpoint 'StudentCourse.Controllers.StudentController.AddStudent (StudentCourse)'
+2026-06-15 12:12:49.735 +05:30 [INF] Route matched with {action = "AddStudent", controller = "Student"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult AddStudent(StudentCourse.DTOs.CreateStudentDto) on controller StudentCourse.Controllers.StudentController (StudentCourse).
+2026-06-15 12:12:51.437 +05:30 [INF] Executing BadRequestObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ValidationProblemDetails'.
+2026-06-15 12:12:51.537 +05:30 [INF] Executed action StudentCourse.Controllers.StudentController.AddStudent (StudentCourse) in 1781.3047ms
+2026-06-15 12:12:51.543 +05:30 [INF] Executed endpoint 'StudentCourse.Controllers.StudentController.AddStudent (StudentCourse)'
+2026-06-15 12:12:51.558 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5228/api/Student - 400 null application/problem+json; charset=utf-8 1936.034ms
+2026-06-15 12:14:12.982 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5228/api/Student/45 - null null
+2026-06-15 12:14:13.013 +05:30 [INF] Executing endpoint 'StudentCourse.Controllers.StudentController.GetStudentById (StudentCourse)'
+2026-06-15 12:14:13.051 +05:30 [INF] Route matched with {action = "GetStudentById", controller = "Student"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetStudentById(Int32) on controller StudentCourse.Controllers.StudentController (StudentCourse).
+2026-06-15 12:14:13.093 +05:30 [INF] Getting student with ID 45
+2026-06-15 12:14:20.635 +05:30 [INF] Executed DbCommand (219ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[Age], [t].[Email], [t].[Name], [t0].[StudentId], [t0].[CourseId], [t0].[Marks], [t0].[Id], [t0].[CourseName], [t0].[Duration]
+FROM (
+    SELECT TOP(1) [s].[Id], [s].[Age], [s].[Email], [s].[Name]
+    FROM [Students] AS [s]
+    WHERE [s].[Id] = @__id_0
+) AS [t]
+LEFT JOIN (
+    SELECT [s0].[StudentId], [s0].[CourseId], [s0].[Marks], [c].[Id], [c].[CourseName], [c].[Duration]
+    FROM [StudentCourses] AS [s0]
+    INNER JOIN [Courses] AS [c] ON [s0].[CourseId] = [c].[Id]
+) AS [t0] ON [t].[Id] = [t0].[StudentId]
+ORDER BY [t].[Id], [t0].[StudentId], [t0].[CourseId]
+2026-06-15 12:14:20.713 +05:30 [WRN] Student with ID 45 not found
+2026-06-15 12:14:20.724 +05:30 [INF] Executing NotFoundObjectResult, writing value of type 'StudentCourse.Models.CommonResponse`1[[System.Object, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-06-15 12:14:20.741 +05:30 [INF] Executed action StudentCourse.Controllers.StudentController.GetStudentById (StudentCourse) in 7681.0392ms
+2026-06-15 12:14:20.745 +05:30 [INF] Executed endpoint 'StudentCourse.Controllers.StudentController.GetStudentById (StudentCourse)'
+2026-06-15 12:14:20.827 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5228/api/Student/45 - 404 null application/json; charset=utf-8 7845.6335ms
+2026-06-15 12:17:21.581 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5228/api/Student - null null
+2026-06-15 12:17:21.610 +05:30 [INF] Executing endpoint 'StudentCourse.Controllers.StudentController.GetAllStudents (StudentCourse)'
+2026-06-15 12:17:21.617 +05:30 [INF] Route matched with {action = "GetAllStudents", controller = "Student"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetAllStudents() on controller StudentCourse.Controllers.StudentController (StudentCourse).
+2026-06-15 12:17:21.629 +05:30 [INF] Getting all students
+2026-06-15 12:17:21.718 +05:30 [INF] Executed DbCommand (17ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [s].[Id], [s].[Age], [s].[Email], [s].[Name]
+FROM [Students] AS [s]
+2026-06-15 12:17:21.892 +05:30 [INF] 200 OK - Retrieved all students successfully
+2026-06-15 12:17:21.895 +05:30 [INF] Executing OkObjectResult, writing value of type 'StudentCourse.Models.CommonResponse`1[[System.Collections.Generic.List`1[[StudentCourse.DTOs.StudentDto, StudentCourse, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-06-15 12:17:21.906 +05:30 [INF] Executed action StudentCourse.Controllers.StudentController.GetAllStudents (StudentCourse) in 283.5329ms
+2026-06-15 12:17:21.908 +05:30 [INF] Executed endpoint 'StudentCourse.Controllers.StudentController.GetAllStudents (StudentCourse)'
+2026-06-15 12:17:21.911 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5228/api/Student - 200 null application/json; charset=utf-8 329.633ms
+2026-06-15 12:56:40.803 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5228/api/Marks/student/1 - null null
+2026-06-15 12:56:40.882 +05:30 [INF] Executing endpoint 'StudentCourse.Controllers.MarksController.GetMarksByStudent (StudentCourse)'
+2026-06-15 12:56:40.929 +05:30 [INF] Route matched with {action = "GetMarksByStudent", controller = "Marks"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetMarksByStudent(Int32) on controller StudentCourse.Controllers.MarksController (StudentCourse).
+2026-06-15 12:56:41.452 +05:30 [INF] Executed DbCommand (24ms) [Parameters=[@__studentId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [s].[StudentId], [s].[CourseId], [s].[Marks], [s0].[Id], [s0].[Age], [s0].[Email], [s0].[Name], [c].[Id], [c].[CourseName], [c].[Duration]
+FROM [StudentCourses] AS [s]
+INNER JOIN [Students] AS [s0] ON [s].[StudentId] = [s0].[Id]
+INNER JOIN [Courses] AS [c] ON [s].[CourseId] = [c].[Id]
+WHERE [s].[StudentId] = @__studentId_0
+2026-06-15 12:56:41.559 +05:30 [INF] Executing OkObjectResult, writing value of type 'StudentCourse.Models.CommonResponse`1[[System.Collections.Generic.List`1[[StudentCourse.DTOs.StudentMarkDto, StudentCourse, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-06-15 12:56:41.571 +05:30 [INF] Executed action StudentCourse.Controllers.MarksController.GetMarksByStudent (StudentCourse) in 615.5838ms
+2026-06-15 12:56:41.576 +05:30 [INF] Executed endpoint 'StudentCourse.Controllers.MarksController.GetMarksByStudent (StudentCourse)'
+2026-06-15 12:56:41.581 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5228/api/Marks/student/1 - 200 null application/json; charset=utf-8 797.5311ms
+2026-06-15 12:58:09.676 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5228/api/Marks/course/1 - null null
+2026-06-15 12:58:09.708 +05:30 [INF] Executing endpoint 'StudentCourse.Controllers.MarksController.GetMarksByCourse (StudentCourse)'
+2026-06-15 12:58:09.784 +05:30 [INF] Route matched with {action = "GetMarksByCourse", controller = "Marks"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetMarksByCourse(Int32) on controller StudentCourse.Controllers.MarksController (StudentCourse).
+2026-06-15 12:58:09.935 +05:30 [INF] Executed DbCommand (11ms) [Parameters=[@__courseId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [s].[StudentId], [s].[CourseId], [s].[Marks], [s0].[Id], [s0].[Age], [s0].[Email], [s0].[Name], [c].[Id], [c].[CourseName], [c].[Duration]
+FROM [StudentCourses] AS [s]
+INNER JOIN [Students] AS [s0] ON [s].[StudentId] = [s0].[Id]
+INNER JOIN [Courses] AS [c] ON [s].[CourseId] = [c].[Id]
+WHERE [s].[CourseId] = @__courseId_0
+2026-06-15 12:58:09.952 +05:30 [INF] Executing OkObjectResult, writing value of type 'StudentCourse.Models.CommonResponse`1[[System.Collections.Generic.List`1[[StudentCourse.DTOs.StudentMarkDto, StudentCourse, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-06-15 12:58:09.969 +05:30 [INF] Executed action StudentCourse.Controllers.MarksController.GetMarksByCourse (StudentCourse) in 168.1205ms
+2026-06-15 12:58:09.987 +05:30 [INF] Executed endpoint 'StudentCourse.Controllers.MarksController.GetMarksByCourse (StudentCourse)'
+2026-06-15 12:58:09.991 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5228/api/Marks/course/1 - 200 null application/json; charset=utf-8 315.2719ms

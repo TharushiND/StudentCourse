@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using StudentCourse.Data;
+using StudentCourse.Constants;
 using StudentCourse.DTOs;
 using StudentCourse.Models;
 using StudentCourse.Services.Interfaces;
@@ -36,7 +35,7 @@ namespace StudentCourse.Controllers
                 {
                     Success = true,
                     StatusCode = 200,
-                    Message = "Students retrieved successfully",
+                    Message = SuccessMessages.StudentsRetrieved,
                     Data = students
                 };
 
@@ -52,7 +51,7 @@ namespace StudentCourse.Controllers
                     {
                         Success = false,
                         StatusCode = 500,
-                        Message = "Internal server error",
+                        Message = ErrorMessages.InternalServerError,
                         Data = null
                     });
             }
@@ -63,22 +62,16 @@ namespace StudentCourse.Controllers
         {
             try
             {
-                _logger.LogInformation(
-                "Adding student {Name}",
-                dto.Name);
+                _logger.LogInformation("Adding student {Name}",dto.Name);
                 var student = _studentService.AddStudent(dto);
-
-
-                _logger.LogInformation(
-                "Student created with ID {Id}",
-                student.Id);
+                _logger.LogInformation("Student created with ID {Id}",student.Id);
 
                 return StatusCode(201,
                     new CommonResponse<StudentDto>
                     {
                         Success = true,
                         StatusCode = 201,
-                        Message = "Student created successfully",
+                        Message = SuccessMessages.StudentCreated,
                         Data = student
                     });
             }
@@ -91,7 +84,7 @@ namespace StudentCourse.Controllers
                     {
                         Success = false,
                         StatusCode = 500,
-                        Message = "Internal server error",
+                        Message = ErrorMessages.InternalServerError,
                         Data = null
                     });
             }
@@ -114,7 +107,7 @@ namespace StudentCourse.Controllers
                                 {
                                     Success = false,
                                     StatusCode = 404,
-                                    Message = "Student not found",
+                                    Message = ErrorMessages.StudentNotFound,
                                     Data = null
                                 });
                 }
@@ -124,7 +117,7 @@ namespace StudentCourse.Controllers
                     {
                         Success = true,
                         StatusCode = 200,
-                        Message = "Student updated successfully",
+                        Message = SuccessMessages.StudentUpdated,
                         Data = student
                     });
             }
@@ -137,7 +130,7 @@ namespace StudentCourse.Controllers
                     {
                         Success = false,
                         StatusCode = 500,
-                        Message = "Internal server error",
+                        Message = ErrorMessages.InternalServerError,
                         Data = null
                     });
             }
@@ -160,7 +153,7 @@ namespace StudentCourse.Controllers
                                 {
                                     Success = false,
                                     StatusCode = 404,
-                                    Message = "Student not found",
+                                    Message = ErrorMessages.StudentNotFound,
                                     Data = "Student not found"
                                 });
                 }
@@ -171,7 +164,7 @@ namespace StudentCourse.Controllers
                     {
                         Success = true,
                         StatusCode = 200,
-                        Message = "Student deleted",
+                        Message = SuccessMessages.StudentDeleted,
                         Data = "Student Deleted successfully"
                     });
             }
@@ -184,7 +177,7 @@ namespace StudentCourse.Controllers
                     {
                         Success = false,
                         StatusCode = 500,
-                        Message = "Internal server error",
+                        Message = ErrorMessages.InternalServerError,
                         Data = null
                     });
             }
@@ -209,7 +202,7 @@ namespace StudentCourse.Controllers
                                 {
                                     Success = false,
                                     StatusCode = 404,
-                                    Message = "not found",
+                                    Message = ErrorMessages.StudentNotFound,
                                     Data = null
                                 });
                 }
@@ -219,8 +212,8 @@ namespace StudentCourse.Controllers
                     {
                         Success = true,
                         StatusCode = 200,
-                        Message = "Enrollment successful",
-                        Data = "Student enrolled successfully"
+                        Message = SuccessMessages.StudentEnrolled,
+                        Data = "Enrollment successful"
                     });
             }
 
@@ -233,7 +226,7 @@ namespace StudentCourse.Controllers
                     {
                         Success = false,
                         StatusCode = 500,
-                        Message = "Internal server error",
+                        Message = ErrorMessages.InternalServerError,
                         Data = null
                     });
             }
@@ -256,7 +249,7 @@ namespace StudentCourse.Controllers
                     {
                         Success = true,
                         StatusCode = 200,
-                        Message = "Students with their courses retrieved successfully",
+                        Message = SuccessMessages.StudentsRetrievedwithCourses,
                         Data = result
                     };
 
@@ -271,7 +264,7 @@ namespace StudentCourse.Controllers
                     {
                         Success = false,
                         StatusCode = 500,
-                        Message = "Internal server error",
+                        Message = ErrorMessages.InternalServerError,
                         Data = null
                     });
             }
@@ -299,7 +292,7 @@ namespace StudentCourse.Controllers
                                 {
                                     Success = false,
                                     StatusCode = 404,
-                                    Message = "Student not found",
+                                    Message = ErrorMessages.StudentNotFound,
                                     Data = null
                                 });
                 }
@@ -313,7 +306,7 @@ namespace StudentCourse.Controllers
                     {
                         Success = true,
                         StatusCode = 200,
-                        Message = "Student retrieved successfully",
+                        Message = SuccessMessages.StudentRetrievedById,
                         Data = student
                     });
             }
@@ -330,7 +323,7 @@ namespace StudentCourse.Controllers
                     {
                         Success = false,
                         StatusCode = 500,
-                        Message = "Internal server error",
+                        Message = ErrorMessages.InternalServerError,
                         Data = null
                     });
             }

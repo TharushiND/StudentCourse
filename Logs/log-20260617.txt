@@ -1,0 +1,115 @@
+2026-06-17 17:14:56.911 +05:30 [INF] Serilog is working!
+2026-06-17 17:14:58.555 +05:30 [WRN] The WebRootPath was not found: C:\Users\TharushiDharmarathna\source\repos\StudentCourse\wwwroot. Static files may be unavailable.
+2026-06-17 17:14:58.973 +05:30 [INF] Now listening on: http://localhost:5228
+2026-06-17 17:14:59.067 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2026-06-17 17:14:59.069 +05:30 [INF] Hosting environment: Development
+2026-06-17 17:14:59.070 +05:30 [INF] Content root path: C:\Users\TharushiDharmarathna\source\repos\StudentCourse
+2026-06-17 17:14:59.880 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5228/swagger/index.html - null null
+2026-06-17 17:15:00.557 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5228/swagger/index.html - 200 null text/html;charset=utf-8 708.7305ms
+2026-06-17 17:15:00.558 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5228/_vs/browserLink - null null
+2026-06-17 17:15:00.588 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5228/_framework/aspnetcore-browser-refresh.js - null null
+2026-06-17 17:15:00.617 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5228/_framework/aspnetcore-browser-refresh.js - 200 16511 application/javascript; charset=utf-8 29.1344ms
+2026-06-17 17:15:00.655 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5228/_vs/browserLink - 200 null text/javascript; charset=UTF-8 98.0353ms
+2026-06-17 17:15:00.702 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5228/swagger/v1/swagger.json - null null
+2026-06-17 17:15:00.746 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5228/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 44.3403ms
+2026-06-17 17:15:07.747 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5228/api/Course - null null
+2026-06-17 17:15:07.789 +05:30 [WRN] Failed to determine the https port for redirect.
+2026-06-17 17:15:07.818 +05:30 [INF] Executing endpoint 'StudentCourse.Controllers.CourseController.GetAllCourses (StudentCourse)'
+2026-06-17 17:15:07.852 +05:30 [INF] Route matched with {action = "GetAllCourses", controller = "Course"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetAllCourses() on controller StudentCourse.Controllers.CourseController (StudentCourse).
+2026-06-17 17:15:08.276 +05:30 [INF] Getting all courses
+2026-06-17 17:15:11.079 +05:30 [INF] Executed DbCommand (26ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Id], [c].[CourseName], [c].[Duration]
+FROM [Courses] AS [c]
+2026-06-17 17:15:11.171 +05:30 [INF] 200 OK - Retrieved all courses successfully
+2026-06-17 17:15:11.181 +05:30 [INF] Executing OkObjectResult, writing value of type 'StudentCourse.Models.CommonResponse`1[[System.Collections.Generic.List`1[[StudentCourse.DTOs.CourseDto, StudentCourse, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-06-17 17:15:11.194 +05:30 [INF] Executed action StudentCourse.Controllers.CourseController.GetAllCourses (StudentCourse) in 3332.1317ms
+2026-06-17 17:15:11.197 +05:30 [INF] Executed endpoint 'StudentCourse.Controllers.CourseController.GetAllCourses (StudentCourse)'
+2026-06-17 17:15:11.215 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5228/api/Course - 200 null application/json; charset=utf-8 3467.7938ms
+2026-06-17 17:15:30.713 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5228/api/Course - application/json 43
+2026-06-17 17:15:30.777 +05:30 [INF] Executing endpoint 'StudentCourse.Controllers.CourseController.AddCourse (StudentCourse)'
+2026-06-17 17:15:30.787 +05:30 [INF] Route matched with {action = "AddCourse", controller = "Course"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult AddCourse(StudentCourse.DTOs.CreateCourseDto) on controller StudentCourse.Controllers.CourseController (StudentCourse).
+2026-06-17 17:15:30.891 +05:30 [INF] Executing BadRequestObjectResult, writing value of type 'StudentCourse.Models.CommonResponse`1[[System.Collections.Generic.List`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-06-17 17:15:30.901 +05:30 [INF] Executed action StudentCourse.Controllers.CourseController.AddCourse (StudentCourse) in 104.4106ms
+2026-06-17 17:15:30.913 +05:30 [INF] Executed endpoint 'StudentCourse.Controllers.CourseController.AddCourse (StudentCourse)'
+2026-06-17 17:15:30.917 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5228/api/Course - 400 null application/json; charset=utf-8 211.1501ms
+2026-06-17 22:27:48.514 +05:30 [INF] Serilog is working!
+2026-06-17 22:27:49.036 +05:30 [WRN] The WebRootPath was not found: C:\Users\TharushiDharmarathna\source\repos\StudentCourse\wwwroot. Static files may be unavailable.
+2026-06-17 22:27:49.187 +05:30 [INF] Now listening on: http://localhost:5228
+2026-06-17 22:27:49.280 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2026-06-17 22:27:49.282 +05:30 [INF] Hosting environment: Development
+2026-06-17 22:27:49.284 +05:30 [INF] Content root path: C:\Users\TharushiDharmarathna\source\repos\StudentCourse
+2026-06-17 22:27:49.431 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5228/swagger/index.html - null null
+2026-06-17 22:27:49.763 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5228/swagger/index.html - 200 null text/html;charset=utf-8 353.4247ms
+2026-06-17 22:27:49.770 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5228/_vs/browserLink - null null
+2026-06-17 22:27:49.778 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5228/_framework/aspnetcore-browser-refresh.js - null null
+2026-06-17 22:27:49.790 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5228/_framework/aspnetcore-browser-refresh.js - 200 16511 application/javascript; charset=utf-8 12.0278ms
+2026-06-17 22:27:49.823 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5228/_vs/browserLink - 200 null text/javascript; charset=UTF-8 55.0499ms
+2026-06-17 22:27:49.860 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5228/swagger/v1/swagger.json - null null
+2026-06-17 22:27:49.886 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5228/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 26.1535ms
+2026-06-17 22:27:59.689 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5228/api/Course - application/json 46
+2026-06-17 22:27:59.702 +05:30 [WRN] Failed to determine the https port for redirect.
+2026-06-17 22:27:59.737 +05:30 [INF] Executing endpoint 'StudentCourse.Controllers.CourseController.AddCourse (StudentCourse)'
+2026-06-17 22:27:59.784 +05:30 [INF] Route matched with {action = "AddCourse", controller = "Course"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult AddCourse(StudentCourse.DTOs.CreateCourseDto) on controller StudentCourse.Controllers.CourseController (StudentCourse).
+2026-06-17 22:28:00.164 +05:30 [INF] Executing BadRequestObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ValidationProblemDetails'.
+2026-06-17 22:28:00.191 +05:30 [INF] Executed action StudentCourse.Controllers.CourseController.AddCourse (StudentCourse) in 399.4053ms
+2026-06-17 22:28:00.195 +05:30 [INF] Executed endpoint 'StudentCourse.Controllers.CourseController.AddCourse (StudentCourse)'
+2026-06-17 22:28:00.201 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5228/api/Course - 400 null application/problem+json; charset=utf-8 511.3948ms
+2026-06-17 22:28:24.545 +05:30 [INF] Serilog is working!
+2026-06-17 22:28:24.927 +05:30 [WRN] The WebRootPath was not found: C:\Users\TharushiDharmarathna\source\repos\StudentCourse\wwwroot. Static files may be unavailable.
+2026-06-17 22:28:25.032 +05:30 [INF] Now listening on: http://localhost:5228
+2026-06-17 22:28:25.091 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2026-06-17 22:28:25.093 +05:30 [INF] Hosting environment: Development
+2026-06-17 22:28:25.094 +05:30 [INF] Content root path: C:\Users\TharushiDharmarathna\source\repos\StudentCourse
+2026-06-17 22:28:25.629 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5228/swagger/index.html - null null
+2026-06-17 22:28:25.878 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5228/swagger/index.html - 200 null text/html;charset=utf-8 268.6319ms
+2026-06-17 22:28:25.882 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5228/_vs/browserLink - null null
+2026-06-17 22:28:25.893 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5228/_framework/aspnetcore-browser-refresh.js - null null
+2026-06-17 22:28:25.903 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5228/_framework/aspnetcore-browser-refresh.js - 200 16511 application/javascript; charset=utf-8 9.5404ms
+2026-06-17 22:28:25.939 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5228/_vs/browserLink - 200 null text/javascript; charset=UTF-8 58.748ms
+2026-06-17 22:28:25.965 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5228/swagger/v1/swagger.json - null null
+2026-06-17 22:28:25.981 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5228/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 16.0786ms
+2026-06-17 22:28:35.468 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5228/api/Course - application/json 46
+2026-06-17 22:28:35.488 +05:30 [WRN] Failed to determine the https port for redirect.
+2026-06-17 22:28:35.518 +05:30 [INF] Executing endpoint 'StudentCourse.Controllers.CourseController.AddCourse (StudentCourse)'
+2026-06-17 22:28:35.548 +05:30 [INF] Route matched with {action = "AddCourse", controller = "Course"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult AddCourse(StudentCourse.DTOs.CreateCourseDto) on controller StudentCourse.Controllers.CourseController (StudentCourse).
+2026-06-17 22:28:35.835 +05:30 [INF] Executing BadRequestObjectResult, writing value of type 'StudentCourse.Models.CommonResponse`1[[System.Collections.Generic.List`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-06-17 22:28:35.846 +05:30 [INF] Executed action StudentCourse.Controllers.CourseController.AddCourse (StudentCourse) in 291.3036ms
+2026-06-17 22:28:35.849 +05:30 [INF] Executed endpoint 'StudentCourse.Controllers.CourseController.AddCourse (StudentCourse)'
+2026-06-17 22:28:35.851 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5228/api/Course - 400 null application/json; charset=utf-8 383.1113ms
+2026-06-17 23:53:21.507 +05:30 [INF] Serilog is working!
+2026-06-17 23:53:22.400 +05:30 [WRN] The WebRootPath was not found: C:\Users\TharushiDharmarathna\source\repos\StudentCourse\wwwroot. Static files may be unavailable.
+2026-06-17 23:53:22.584 +05:30 [INF] Now listening on: http://localhost:5228
+2026-06-17 23:53:22.673 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2026-06-17 23:53:22.681 +05:30 [INF] Hosting environment: Development
+2026-06-17 23:53:22.682 +05:30 [INF] Content root path: C:\Users\TharushiDharmarathna\source\repos\StudentCourse
+2026-06-17 23:53:23.370 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5228/swagger/index.html - null null
+2026-06-17 23:53:23.695 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5228/_framework/aspnetcore-browser-refresh.js - null null
+2026-06-17 23:53:23.697 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5228/_vs/browserLink - null null
+2026-06-17 23:53:23.728 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5228/swagger/index.html - 200 null text/html;charset=utf-8 361.2256ms
+2026-06-17 23:53:23.738 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5228/_framework/aspnetcore-browser-refresh.js - 200 16511 application/javascript; charset=utf-8 57.855ms
+2026-06-17 23:53:23.808 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5228/_vs/browserLink - 200 null text/javascript; charset=UTF-8 111.514ms
+2026-06-17 23:53:23.856 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5228/swagger/v1/swagger.json - null null
+2026-06-17 23:53:23.916 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5228/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 60.9918ms
+2026-06-17 23:53:35.102 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5228/api/Course - application/json 46
+2026-06-17 23:53:35.122 +05:30 [WRN] Failed to determine the https port for redirect.
+2026-06-17 23:53:35.152 +05:30 [INF] Executing endpoint 'StudentCourse.Controllers.CourseController.AddCourse (StudentCourse)'
+2026-06-17 23:53:35.185 +05:30 [INF] Route matched with {action = "AddCourse", controller = "Course"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult AddCourse(StudentCourse.DTOs.CreateCourseDto) on controller StudentCourse.Controllers.CourseController (StudentCourse).
+2026-06-17 23:53:35.539 +05:30 [INF] Executing BadRequestObjectResult, writing value of type 'StudentCourse.Models.CommonResponse`1[[System.Collections.Generic.List`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-06-17 23:53:35.555 +05:30 [INF] Executed action StudentCourse.Controllers.CourseController.AddCourse (StudentCourse) in 364.0821ms
+2026-06-17 23:53:35.559 +05:30 [INF] Executed endpoint 'StudentCourse.Controllers.CourseController.AddCourse (StudentCourse)'
+2026-06-17 23:53:35.567 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5228/api/Course - 400 null application/json; charset=utf-8 465.5144ms
+2026-06-17 23:54:02.337 +05:30 [INF] Request starting HTTP/1.1 POST http://localhost:5228/api/Course - application/json 50
+2026-06-17 23:54:02.370 +05:30 [INF] Executing endpoint 'StudentCourse.Controllers.CourseController.AddCourse (StudentCourse)'
+2026-06-17 23:54:02.376 +05:30 [INF] Route matched with {action = "AddCourse", controller = "Course"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult AddCourse(StudentCourse.DTOs.CreateCourseDto) on controller StudentCourse.Controllers.CourseController (StudentCourse).
+2026-06-17 23:54:02.428 +05:30 [INF] Adding course sql
+2026-06-17 23:54:04.115 +05:30 [INF] Executed DbCommand (118ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Courses] ([CourseName], [Duration])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1);
+2026-06-17 23:54:04.187 +05:30 [INF] course created with ID 1004
+2026-06-17 23:54:04.194 +05:30 [INF] Executing ObjectResult, writing value of type 'StudentCourse.Models.CommonResponse`1[[StudentCourse.DTOs.CourseDto, StudentCourse, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-06-17 23:54:04.204 +05:30 [INF] Executed action StudentCourse.Controllers.CourseController.AddCourse (StudentCourse) in 1807.7356ms
+2026-06-17 23:54:04.210 +05:30 [INF] Executed endpoint 'StudentCourse.Controllers.CourseController.AddCourse (StudentCourse)'
+2026-06-17 23:54:04.232 +05:30 [INF] Request finished HTTP/1.1 POST http://localhost:5228/api/Course - 201 null application/json; charset=utf-8 1895.6562ms

@@ -20,14 +20,14 @@ namespace StudentCourse.Mappings
                     opt => opt.MapFrom(src => src.StudentCourses));
 
             CreateMap<Student, StudentWithCoursesDto>()
-        .ForMember(
-            dest => dest.StudentName,
-            opt => opt.MapFrom(src => src.Name))
-        .ForMember(
-            dest => dest.Courses,
-            opt => opt.MapFrom(
-                src => src.StudentCourses
-                    .Select(sc => sc.Course!.CourseName)));
+                .ForMember(
+                    dest => dest.StudentName,
+                    opt => opt.MapFrom(src => src.Name))
+                .ForMember(
+                    dest => dest.Courses,
+                    opt => opt.MapFrom(
+                        src => src.StudentCourses
+                            .Select(sc => sc.Course!.CourseName)));
         }
     }
 }

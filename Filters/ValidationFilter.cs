@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
+using StudentCourse.Constants;
 using StudentCourse.Models;
 
 namespace StudentCourse.Filters
@@ -22,10 +23,10 @@ namespace StudentCourse.Filters
                     {
                         Success = false,
                         StatusCode = 400,
-                        Message = "Validation Failed",
+                        Message = ErrorMessages.ValidationFailed,
                         Data = errors
                     };
-
+                
                 context.Result =
                     new BadRequestObjectResult(response);
                 
