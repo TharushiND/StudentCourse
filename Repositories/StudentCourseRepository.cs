@@ -6,20 +6,14 @@ using StudentCourse.Repositories.Interfaces;
 namespace StudentCourse.Repositories
 {
     public class StudentCourseRepository
-        : IStudentCourseRepository
+        : Repository<StudentCourseMapping>,IStudentCourseRepository
     {
         private readonly AppDbContext _context;
 
         public StudentCourseRepository(
-            AppDbContext context)
+            AppDbContext context) : base(context)
         {
             _context = context;
-        }
-
-        public void EnrollStudent(
-            StudentCourseMapping studentCourse)
-        {
-            _context.StudentCourses.Add(studentCourse);
         }
 
         public StudentCourseMapping? GetEnrollment(
@@ -57,11 +51,6 @@ namespace StudentCourse.Repositories
                 .Include(x => x.Course)
                 .Where(x => x.CourseId == courseId)
                 .ToList();
-        }
-
-        public void SaveChanges()
-        {
-            _context.SaveChanges();
         }
     }
 }

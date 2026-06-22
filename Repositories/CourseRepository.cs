@@ -2,21 +2,15 @@
 using StudentCourse.Data;
 using StudentCourse.Models;
 using StudentCourse.Repositories.Interfaces;
-
 namespace StudentCourse.Repositories
 {
-    public class CourseRepository : ICourseRepository
+    public class CourseRepository : Repository<Course>, ICourseRepository
     {
         private readonly AppDbContext _context;
 
-        public CourseRepository(AppDbContext context)
+        public CourseRepository(AppDbContext context) : base(context) 
         {
             _context = context;
-        }
-
-        public List<Course> GetAllCourses()
-        {
-            return _context.Courses.ToList();
         }
 
         public Course? GetCourseById(int id)
@@ -27,21 +21,6 @@ namespace StudentCourse.Repositories
                 .FirstOrDefault(c => c.Id == id);
         }
 
-        public void AddCourse(Course course)
-        {
-            _context.Courses.Add(course);
-        }
-
-        public void UpdateCourse(Course course)
-        {
-            _context.Courses.Update(course);
-        }
-
-        public void DeleteCourse(Course course)
-        {
-            _context.Courses.Remove(course);
-        }
-
         public List<Course> GetCoursesWithStudents()
         {
             return _context.Courses
@@ -49,9 +28,6 @@ namespace StudentCourse.Repositories
                 .ThenInclude(sc => sc.Student)
                 .ToList();
         }
-        public void SaveChanges()
-        {
-            _context.SaveChanges();
-        }
+        
     }
 }

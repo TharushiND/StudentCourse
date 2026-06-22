@@ -12,9 +12,9 @@ namespace StudentCourse.Services.Interfaces
 
         StudentDto? UpdateStudent(int id, UpdateStudentDto dto);
 
-        bool DeleteStudent(int id);
+        StudentDto? DeleteStudent(int id);
 
-        bool EnrollStudent(EnrollStudentDto dto);
+        EnrollStudentDto? EnrollStudent(EnrollStudentDto dto);
 
         List<StudentWithCoursesDto> GetStudentsWithCourses();
     }

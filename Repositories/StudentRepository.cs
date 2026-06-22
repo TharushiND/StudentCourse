@@ -5,19 +5,15 @@ using StudentCourse.Repositories.Interfaces;
 
 namespace StudentCourse.Repositories
 {
-    public class StudentRepository : IStudentRepository
+    public class StudentRepository : Repository<Student>, IStudentRepository
     {
         private readonly AppDbContext _context;
 
-        public StudentRepository(AppDbContext context)
+        public StudentRepository(AppDbContext context) : base(context)
         {
             _context = context;
         }
 
-        public List<Student> GetAllStudents()
-        {
-            return _context.Students.ToList();
-        }
 
         public Student? GetStudentById(int id)
         {
@@ -25,21 +21,6 @@ namespace StudentCourse.Repositories
                 .Include(s => s.StudentCourses)
                 .ThenInclude(sc => sc.Course)
                 .FirstOrDefault(s => s.Id == id);
-        }
-
-        public void AddStudent(Student student)
-        {
-            _context.Students.Add(student);
-        }
-
-        public void UpdateStudent(Student student)
-        {
-            _context.Students.Update(student);
-        }
-
-        public void DeleteStudent(Student student)
-        {
-            _context.Students.Remove(student);
         }
 
         public void EnrollStudent(StudentCourseMapping studentCourse)
@@ -53,10 +34,6 @@ namespace StudentCourse.Repositories
                 .Include(s => s.StudentCourses)
                 .ThenInclude(sc => sc.Course)
                 .ToList();
-        }
-        public void SaveChanges()
-        {
-            _context.SaveChanges();
         }
     }
 }

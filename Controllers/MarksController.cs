@@ -76,6 +76,18 @@ namespace StudentCourse.Controllers
             {
                 var result =_studentCourseService.GetMarksByStudent(studentId);
 
+                if (result == null)
+                {
+                    return NotFound(
+                        new CommonResponse<object>
+                        {
+                            Success = false,
+                            StatusCode = 404,
+                            Message = ErrorMessages.StudentNotFound,
+                            Data = null
+                        });
+                }
+
                 return Ok(
                     new CommonResponse<List<StudentMarkDto>>
                     {
@@ -107,6 +119,18 @@ namespace StudentCourse.Controllers
             try
             {
                 var result =_studentCourseService.GetMarksByCourse(courseId);
+
+                if (result == null)
+                {
+                    return NotFound(
+                        new CommonResponse<object>
+                        {
+                            Success = false,
+                            StatusCode = 404,
+                            Message = ErrorMessages.CourseNotFound,
+                            Data = null
+                        });
+                }
 
                 return Ok(
                     new CommonResponse<List<StudentMarkDto>>
@@ -140,7 +164,7 @@ namespace StudentCourse.Controllers
             {
                 var success = _studentCourseService.UpdateMarks(dto);
 
-                if (!success)
+                if (success == null)
                 {
                     return NotFound(
                         new CommonResponse<object>
@@ -153,12 +177,12 @@ namespace StudentCourse.Controllers
                 }
 
                 return Ok(
-                    new CommonResponse<UpdateMarksDto>
+                    new CommonResponse<StudentMarkDto>
                     {
                         Success = true,
                         StatusCode = 200,
                         Message = SuccessMessages.MarksUpdated,
-                        Data = dto
+                        Data = success
                     });
             }
             catch (Exception ex)
@@ -182,9 +206,9 @@ namespace StudentCourse.Controllers
         {
             try
             {
-                var success = _studentCourseService.DeleteMarks(dto);
+                var deleted = _studentCourseService.DeleteMarks(dto);
 
-                if (!success)
+                if (deleted==null)
                 {
                     return NotFound(
                         new CommonResponse<object>
@@ -197,12 +221,12 @@ namespace StudentCourse.Controllers
                 }
 
                 return Ok(
-                    new CommonResponse<object>
+                    new CommonResponse<StudentMarkDto>
                     {
                         Success = true,
                         StatusCode = 200,
                         Message = SuccessMessages.MarksDeleted,
-                        Data = null
+                        Data = deleted
                     });
             }
             catch (Exception ex)

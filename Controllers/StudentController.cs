@@ -142,9 +142,9 @@ namespace StudentCourse.Controllers
             try
             {
                 _logger.LogInformation("Deleting a student");
-                var deleted = _studentService.DeleteStudent(id);
+                var deletedStudent = _studentService.DeleteStudent(id);
 
-                if (!deleted)
+                if (deletedStudent== null)
                 {
                     _logger.LogWarning(
                     "Student with ID {Id} not found", id);
@@ -160,12 +160,12 @@ namespace StudentCourse.Controllers
 
                 _logger.LogInformation("Student was deleted");
                 return Ok(
-                    new CommonResponse<string>
+                    new CommonResponse<StudentDto>
                     {
                         Success = true,
                         StatusCode = 200,
                         Message = SuccessMessages.StudentDeleted,
-                        Data = "Student Deleted successfully"
+                        Data = deletedStudent
                     });
             }
             catch (Exception ex)
@@ -192,7 +192,7 @@ namespace StudentCourse.Controllers
                 var enrolled = _studentService.EnrollStudent(dto);
 
                 
-                if (!enrolled)
+                if (enrolled==null)
                 {
                     _logger.LogWarning(
                     "Student or Course not found. StudentId: {StudentId}, CourseId: {CourseId}", dto.StudentId, dto.CourseId);
@@ -208,12 +208,12 @@ namespace StudentCourse.Controllers
                 }
 
                 return Ok(
-                    new CommonResponse<string>
+                    new CommonResponse<EnrollStudentDto>
                     {
                         Success = true,
                         StatusCode = 200,
                         Message = SuccessMessages.StudentEnrolled,
-                        Data = "Enrollment successful"
+                        Data = enrolled
                     });
             }
 

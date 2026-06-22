@@ -21,7 +21,7 @@ namespace StudentCourse.Services
 
         public List<CourseDto> GetAllCourses()
         {
-            var courses = _courseRepository.GetAllCourses();
+            var courses = _courseRepository.GetAll();
 
             return _mapper.Map<List<CourseDto>>(courses);
         }
@@ -40,25 +40,22 @@ namespace StudentCourse.Services
         {
             var course = _mapper.Map<Course>(dto);
 
-            _courseRepository.AddCourse(course);
+            _courseRepository.Add(course);
             _courseRepository.SaveChanges();
 
             return _mapper.Map<CourseDto>(course);
         }
 
-        public CourseDto? UpdateCourse(
-            int id,
-            UpdateCourseDto dto)
+        public CourseDto? UpdateCourse(int id, UpdateCourseDto dto)
         {
-            var course =
-                _courseRepository.GetCourseById(id);
+            var course = _courseRepository.GetCourseById(id);
 
             if (course == null)
                 return null;
 
             _mapper.Map(dto, course);
 
-            _courseRepository.UpdateCourse(course);
+            _courseRepository.Update(course);
             _courseRepository.SaveChanges();
 
             return _mapper.Map<CourseDto>(course);
@@ -66,26 +63,22 @@ namespace StudentCourse.Services
 
         public bool DeleteCourse(int id)
         {
-            var course =
-                _courseRepository.GetCourseById(id);
+            var course = _courseRepository.GetCourseById(id);
 
             if (course == null)
                 return false;
 
-            _courseRepository.DeleteCourse(course);
+            _courseRepository.Delete(course);
             _courseRepository.SaveChanges();
 
             return true;
         }
 
-        public List<CourseWithStudentsDto>
-            GetCoursesWithStudents()
+        public List<CourseWithStudentsDto> GetCoursesWithStudents()
         {
-            var courses =
-                _courseRepository.GetCoursesWithStudents();
+            var courses = _courseRepository.GetCoursesWithStudents();
 
-            return _mapper.Map<
-                List<CourseWithStudentsDto>>(courses);
+            return _mapper.Map<List<CourseWithStudentsDto>>(courses);
         }
     }
 }

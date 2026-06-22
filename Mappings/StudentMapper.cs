@@ -14,6 +14,8 @@ namespace StudentCourse.Mappings
 
             CreateMap<UpdateStudentDto, Student>();
 
+            CreateMap<StudentCourseMapping, EnrollStudentDto>();
+
             CreateMap<Student, StudentDetailsDto>()
                 .ForMember(
                     dest => dest.Courses,

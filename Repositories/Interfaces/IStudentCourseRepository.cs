@@ -2,10 +2,8 @@
 
 namespace StudentCourse.Repositories.Interfaces
 {
-    public interface IStudentCourseRepository
+    public interface IStudentCourseRepository :IRepository<StudentCourseMapping>
     {
-        void EnrollStudent(StudentCourseMapping studentCourse);
-
         StudentCourseMapping? GetEnrollment(int studentId,int courseId);
 
         List<StudentCourseMapping> GetMarksByStudent(int studentId);
@@ -13,6 +11,5 @@ namespace StudentCourse.Repositories.Interfaces
         List<StudentCourseMapping> GetMarksByCourse( int courseId);
 
         void DeleteEnrollment(StudentCourseMapping enrollment);
-        void SaveChanges();
     }
 }

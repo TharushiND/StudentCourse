@@ -1,0 +1,113 @@
+2026-06-19 09:20:54.425 +05:30 [INF] Serilog is working!
+2026-06-19 09:20:55.201 +05:30 [WRN] The WebRootPath was not found: C:\Users\TharushiDharmarathna\source\repos\StudentCourse\wwwroot. Static files may be unavailable.
+2026-06-19 09:20:55.478 +05:30 [INF] Now listening on: http://localhost:5228
+2026-06-19 09:20:55.663 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2026-06-19 09:20:55.668 +05:30 [INF] Hosting environment: Development
+2026-06-19 09:20:55.671 +05:30 [INF] Content root path: C:\Users\TharushiDharmarathna\source\repos\StudentCourse
+2026-06-19 09:20:56.169 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5228/swagger - null null
+2026-06-19 09:20:56.390 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5228/swagger - 301 0 null 238.964ms
+2026-06-19 09:20:56.402 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5228/swagger/index.html - null null
+2026-06-19 09:20:56.504 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5228/swagger/index.html - 200 null text/html;charset=utf-8 103.1391ms
+2026-06-19 09:20:56.507 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5228/swagger/swagger-ui-bundle.js - null null
+2026-06-19 09:20:56.517 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5228/_vs/browserLink - null null
+2026-06-19 09:20:56.509 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5228/swagger/swagger-ui-standalone-preset.js - null null
+2026-06-19 09:20:56.524 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5228/swagger/swagger-ui.css - null null
+2026-06-19 09:20:56.529 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5228/_framework/aspnetcore-browser-refresh.js - null null
+2026-06-19 09:20:56.583 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5228/_framework/aspnetcore-browser-refresh.js - 200 16511 application/javascript; charset=utf-8 54.0909ms
+2026-06-19 09:20:56.616 +05:30 [INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+2026-06-19 09:20:56.616 +05:30 [INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+2026-06-19 09:20:56.622 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5228/swagger/swagger-ui.css - 200 152034 text/css 97.499ms
+2026-06-19 09:20:56.622 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5228/swagger/swagger-ui-standalone-preset.js - 200 230280 text/javascript 112.685ms
+2026-06-19 09:20:56.636 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5228/_vs/browserLink - 200 null text/javascript; charset=UTF-8 119.1562ms
+2026-06-19 09:20:56.641 +05:30 [INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+2026-06-19 09:20:56.648 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5228/swagger/swagger-ui-bundle.js - 200 1456926 text/javascript 140.6049ms
+2026-06-19 09:20:56.755 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5228/swagger/v1/swagger.json - null null
+2026-06-19 09:20:56.776 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5228/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 21.832ms
+2026-06-19 09:21:19.405 +05:30 [INF] Request starting HTTP/1.1 DELETE http://localhost:5228/api/Student/1006 - null null
+2026-06-19 09:21:19.419 +05:30 [WRN] Failed to determine the https port for redirect.
+2026-06-19 09:21:19.469 +05:30 [INF] Executing endpoint 'StudentCourse.Controllers.StudentController.DeleteStudent (StudentCourse)'
+2026-06-19 09:21:19.514 +05:30 [INF] Route matched with {action = "DeleteStudent", controller = "Student"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult DeleteStudent(Int32) on controller StudentCourse.Controllers.StudentController (StudentCourse).
+2026-06-19 09:21:20.989 +05:30 [INF] Deleting a student
+2026-06-19 09:21:22.281 +05:30 [INF] Executed DbCommand (71ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[Age], [t].[Email], [t].[Name], [t0].[StudentId], [t0].[CourseId], [t0].[Marks], [t0].[Id], [t0].[CourseName], [t0].[Duration]
+FROM (
+    SELECT TOP(1) [s].[Id], [s].[Age], [s].[Email], [s].[Name]
+    FROM [Students] AS [s]
+    WHERE [s].[Id] = @__id_0
+) AS [t]
+LEFT JOIN (
+    SELECT [s0].[StudentId], [s0].[CourseId], [s0].[Marks], [c].[Id], [c].[CourseName], [c].[Duration]
+    FROM [StudentCourses] AS [s0]
+    INNER JOIN [Courses] AS [c] ON [s0].[CourseId] = [c].[Id]
+) AS [t0] ON [t].[Id] = [t0].[StudentId]
+ORDER BY [t].[Id], [t0].[StudentId], [t0].[CourseId]
+2026-06-19 09:21:22.695 +05:30 [INF] Executed DbCommand (9ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int32), @p2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+DELETE FROM [StudentCourses]
+OUTPUT 1
+WHERE [CourseId] = @p0 AND [StudentId] = @p1;
+DELETE FROM [Students]
+OUTPUT 1
+WHERE [Id] = @p2;
+2026-06-19 09:21:22.731 +05:30 [INF] Student was deleted
+2026-06-19 09:21:22.747 +05:30 [INF] Executing OkObjectResult, writing value of type 'StudentCourse.Models.CommonResponse`1[[StudentCourse.DTOs.StudentDto, StudentCourse, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-06-19 09:21:22.767 +05:30 [INF] Executed action StudentCourse.Controllers.StudentController.DeleteStudent (StudentCourse) in 3245.4309ms
+2026-06-19 09:21:22.770 +05:30 [INF] Executed endpoint 'StudentCourse.Controllers.StudentController.DeleteStudent (StudentCourse)'
+2026-06-19 09:21:22.785 +05:30 [INF] Request finished HTTP/1.1 DELETE http://localhost:5228/api/Student/1006 - 200 null application/json; charset=utf-8 3407.4922ms
+2026-06-19 09:21:48.076 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5228/api/Student - null null
+2026-06-19 09:21:48.090 +05:30 [INF] Executing endpoint 'StudentCourse.Controllers.StudentController.GetAllStudents (StudentCourse)'
+2026-06-19 09:21:48.094 +05:30 [INF] Route matched with {action = "GetAllStudents", controller = "Student"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetAllStudents() on controller StudentCourse.Controllers.StudentController (StudentCourse).
+2026-06-19 09:21:48.177 +05:30 [INF] Getting all students
+2026-06-19 09:21:48.193 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [s].[Id], [s].[Age], [s].[Email], [s].[Name]
+FROM [Students] AS [s]
+2026-06-19 09:21:48.209 +05:30 [INF] 200 OK - Retrieved all students successfully
+2026-06-19 09:21:48.212 +05:30 [INF] Executing OkObjectResult, writing value of type 'StudentCourse.Models.CommonResponse`1[[System.Collections.Generic.List`1[[StudentCourse.DTOs.StudentDto, StudentCourse, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-06-19 09:21:48.217 +05:30 [INF] Executed action StudentCourse.Controllers.StudentController.GetAllStudents (StudentCourse) in 119.9506ms
+2026-06-19 09:21:48.219 +05:30 [INF] Executed endpoint 'StudentCourse.Controllers.StudentController.GetAllStudents (StudentCourse)'
+2026-06-19 09:21:48.222 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5228/api/Student - 200 null application/json; charset=utf-8 146.5628ms
+2026-06-19 12:11:29.412 +05:30 [INF] Serilog is working!
+2026-06-19 12:11:31.277 +05:30 [WRN] The WebRootPath was not found: C:\Users\TharushiDharmarathna\source\repos\StudentCourse\wwwroot. Static files may be unavailable.
+2026-06-19 12:11:31.822 +05:30 [INF] Now listening on: http://localhost:5228
+2026-06-19 12:11:32.158 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5228/swagger/index.html - null null
+2026-06-19 12:11:32.486 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2026-06-19 12:11:32.488 +05:30 [INF] Hosting environment: Development
+2026-06-19 12:11:32.491 +05:30 [INF] Content root path: C:\Users\TharushiDharmarathna\source\repos\StudentCourse
+2026-06-19 12:11:32.694 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5228/swagger/index.html - 200 null text/html;charset=utf-8 555.8038ms
+2026-06-19 12:11:32.698 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5228/_vs/browserLink - null null
+2026-06-19 12:11:32.743 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5228/_framework/aspnetcore-browser-refresh.js - null null
+2026-06-19 12:11:32.776 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5228/_framework/aspnetcore-browser-refresh.js - 200 16511 application/javascript; charset=utf-8 25.8501ms
+2026-06-19 12:11:32.851 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5228/_vs/browserLink - 200 null text/javascript; charset=UTF-8 159.4628ms
+2026-06-19 12:11:32.995 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5228/swagger/v1/swagger.json - null null
+2026-06-19 12:11:33.035 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5228/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 39.5956ms
+2026-06-19 12:18:44.254 +05:30 [INF] Serilog is working!
+2026-06-19 12:41:33.231 +05:30 [INF] Serilog is working!
+2026-06-19 12:42:52.454 +05:30 [INF] Serilog is working!
+2026-06-19 12:48:45.878 +05:30 [INF] Serilog is working!
+2026-06-19 12:48:47.794 +05:30 [WRN] The WebRootPath was not found: C:\Users\TharushiDharmarathna\source\repos\StudentCourse\wwwroot. Static files may be unavailable.
+2026-06-19 12:48:48.226 +05:30 [INF] Now listening on: http://localhost:5228
+2026-06-19 12:48:49.097 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5228/swagger/index.html - null null
+2026-06-19 12:48:49.461 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2026-06-19 12:48:49.467 +05:30 [INF] Hosting environment: Development
+2026-06-19 12:48:49.475 +05:30 [INF] Content root path: C:\Users\TharushiDharmarathna\source\repos\StudentCourse
+2026-06-19 12:48:50.146 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5228/swagger/index.html - 200 null text/html;charset=utf-8 1059.8875ms
+2026-06-19 12:48:50.147 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5228/_vs/browserLink - null null
+2026-06-19 12:48:50.174 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5228/_framework/aspnetcore-browser-refresh.js - null null
+2026-06-19 12:48:50.209 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5228/_framework/aspnetcore-browser-refresh.js - 200 16511 application/javascript; charset=utf-8 28.1604ms
+2026-06-19 12:48:50.308 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5228/_vs/browserLink - 200 null text/javascript; charset=UTF-8 165.6643ms
+2026-06-19 12:48:50.448 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5228/swagger/v1/swagger.json - null null
+2026-06-19 12:48:50.533 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5228/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 84.9619ms
+2026-06-19 13:01:43.002 +05:30 [INF] Serilog is working!
+2026-06-19 13:01:44.591 +05:30 [WRN] The WebRootPath was not found: C:\Users\TharushiDharmarathna\source\repos\StudentCourse\wwwroot. Static files may be unavailable.
+2026-06-19 13:01:45.067 +05:30 [INF] Now listening on: http://localhost:5228
+2026-06-19 13:01:45.566 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2026-06-19 13:01:45.569 +05:30 [INF] Hosting environment: Development
+2026-06-19 13:01:45.573 +05:30 [INF] Content root path: C:\Users\TharushiDharmarathna\source\repos\StudentCourse
+2026-06-19 13:01:46.300 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5228/swagger/index.html - null null
+2026-06-19 13:01:47.271 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5228/_vs/browserLink - null null
+2026-06-19 13:01:47.272 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5228/_framework/aspnetcore-browser-refresh.js - null null
+2026-06-19 13:01:47.288 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5228/swagger/index.html - 200 null text/html;charset=utf-8 1007.951ms
+2026-06-19 13:01:47.367 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5228/_framework/aspnetcore-browser-refresh.js - 200 16511 application/javascript; charset=utf-8 96.4527ms
+2026-06-19 13:01:47.458 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5228/_vs/browserLink - 200 null text/javascript; charset=UTF-8 187.4024ms
+2026-06-19 13:01:47.590 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5228/swagger/v1/swagger.json - null null
+2026-06-19 13:01:47.673 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5228/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 83.0103ms

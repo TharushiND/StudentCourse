@@ -1,17 +1,20 @@
 ﻿using AutoMapper;
 using StudentCourse.DTOs;
 using StudentCourse.Models;
+using StudentCourse.Repositories;
 using StudentCourse.Repositories.Interfaces;
 using StudentCourse.Services.Interfaces;
 
 namespace StudentCourse.Services
 {
-    public class StudentService : IStudentService
+    public class StudentService :IStudentService
     {
-        private readonly IStudentRepository _studentRepository;
+        private readonly StudentRepository _studentRepository;
         private readonly IMapper _mapper;
 
-        public StudentService(IStudentRepository studentRepository, IMapper mapper)
+        public StudentService(
+            StudentRepository studentRepository,
+            IMapper mapper)
         {
             _studentRepository = studentRepository;
             _mapper = mapper;
@@ -19,10 +22,11 @@ namespace StudentCourse.Services
 
         public List<StudentDto> GetAllStudents()
         {
-            var students = _studentRepository.GetAllStudents();
+            var students = _studentRepository.GetAll();
 
             return _mapper.Map<List<StudentDto>>(students);
         }
+
         public StudentDetailsDto? GetStudentById(int id)
         {
             var student = _studentRepository.GetStudentById(id);
@@ -37,7 +41,7 @@ namespace StudentCourse.Services
         {
             var student = _mapper.Map<Student>(dto);
 
-            _studentRepository.AddStudent(student);
+            _studentRepository.Add(student);
             _studentRepository.SaveChanges();
 
             return _mapper.Map<StudentDto>(student);
@@ -52,33 +56,35 @@ namespace StudentCourse.Services
 
             _mapper.Map(dto, student);
 
-            _studentRepository.UpdateStudent(student);
+            _studentRepository.Update(student);
             _studentRepository.SaveChanges();
 
             return _mapper.Map<StudentDto>(student);
         }
 
-        public bool DeleteStudent(int id)
+        public StudentDto? DeleteStudent(int id)
         {
             var student = _studentRepository.GetStudentById(id);
 
             if (student == null)
-                return false;
+                return null;
 
-            _studentRepository.DeleteStudent(student);
+            var deletedStudent =_mapper.Map<StudentDto>(student);
+
+            _studentRepository.Delete(student);
             _studentRepository.SaveChanges();
 
-            return true;
+            return deletedStudent;
         }
 
-        public bool EnrollStudent(EnrollStudentDto dto)
+        public EnrollStudentDto? EnrollStudent(EnrollStudentDto dto)
         {
-            var studentCourse = _mapper.Map<StudentCourseMapping>(dto);
+            var studentCourse =_mapper.Map<StudentCourseMapping>(dto);
 
             _studentRepository.EnrollStudent(studentCourse);
             _studentRepository.SaveChanges();
 
-            return true;
+            return _mapper.Map<EnrollStudentDto>(studentCourse);
         }
 
         public List<StudentWithCoursesDto> GetStudentsWithCourses()

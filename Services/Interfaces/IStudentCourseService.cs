@@ -14,8 +14,8 @@ namespace StudentCourse.Services.Interfaces
         List<StudentMarkDto> GetMarksByCourse(
             int courseId);
 
-        bool UpdateMarks(UpdateMarksDto dto);
+        StudentMarkDto? UpdateMarks(UpdateMarksDto dto);
 
-        bool DeleteMarks(DeleteMarksDto dto);
+        StudentMarkDto? DeleteMarks(DeleteMarksDto dto);
     }
 }

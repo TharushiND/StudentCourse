@@ -2,21 +2,12 @@
 
 namespace StudentCourse.Repositories.Interfaces
 {
-    public interface IStudentRepository
+    public interface IStudentRepository : IRepository<Student>
     {
-        List<Student> GetAllStudents();
-
         Student? GetStudentById(int id);
-
-        void AddStudent(Student student);
-
-        void UpdateStudent(Student student);
-
-        void DeleteStudent(Student student);
 
         void EnrollStudent(StudentCourseMapping studentCourse);
 
         List<Student> GetStudentsWithCourses();
-        void SaveChanges();
     }
 }

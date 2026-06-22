@@ -64,9 +64,10 @@ builder.Services.AddDbContext<AppDbContext>(options =>
         builder.Configuration.GetConnectionString("DefaultConnection")));
 
 //repositories registration
-builder.Services.AddScoped<IStudentRepository, StudentRepository>();
+builder.Services.AddScoped<StudentRepository>();
 builder.Services.AddScoped<ICourseRepository, CourseRepository>();
 builder.Services.AddScoped<IStudentCourseRepository,StudentCourseRepository>();
+builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 //services registration
 builder.Services.AddScoped<IStudentService, StudentService>();
 builder.Services.AddScoped<ICourseService, CourseService>();
